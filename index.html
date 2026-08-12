@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#09090b">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <title>PILINGO RP</title>
 
@@ -17,15 +19,34 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     html {
       scroll-behavior: smooth;
     }
 
     body {
+      margin: 0;
       background: #09090b;
-      color: #fff;
+      color: white;
       font-family: Arial, Helvetica, sans-serif;
-      padding-bottom: 84px;
+      padding-bottom: 90px;
+      min-height: 100vh;
+      overscroll-behavior-y: none;
+    }
+
+    button,
+    a,
+    input,
+    select {
+      touch-action: manipulation;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     .page {
@@ -50,12 +71,13 @@
     }
 
     .nav-active {
-      color: #ef4444;
+      color: #ef4444 !important;
     }
 
     .glass {
-      background: rgba(18, 18, 20, .92);
-      backdrop-filter: blur(12px);
+      background: rgba(18, 18, 20, .95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .modal {
@@ -83,6 +105,15 @@
     .discord-glow {
       box-shadow: 0 0 35px rgba(88, 101, 242, .18);
     }
+
+    .safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .avatar {
+      object-fit: cover;
+      background: #18181b;
+    }
   </style>
 </head>
 
@@ -90,7 +121,9 @@
 
 <main class="max-w-xl mx-auto min-h-screen">
 
-  <!-- ================= INICIO ================= -->
+  <!-- =====================================================
+       INICIO
+  ====================================================== -->
 
   <section id="inicio" class="page active px-4 pt-6">
 
@@ -112,7 +145,8 @@
 
     </div>
 
-    <!-- USUARIO -->
+
+    <!-- USUARIO CONECTADO -->
 
     <div
       id="userCard"
@@ -124,29 +158,36 @@
         <img
           id="userAvatar"
           src=""
-          class="w-14 h-14 rounded-2xl object-cover"
-          onerror="this.src='https://i.pravatar.cc/150'"
+          alt="Avatar"
+          class="avatar w-14 h-14 rounded-2xl"
         >
 
-        <div class="flex-1">
+        <div class="flex-1 min-w-0">
 
           <p class="text-gray-500 text-xs">
             SESIÓN ACTIVA
           </p>
 
-          <h2 id="userName" class="font-bold text-lg">
+          <h2
+            id="userName"
+            class="font-bold text-lg truncate"
+          >
             Usuario
           </h2>
 
-          <p id="userRole" class="text-red-400 text-xs">
+          <p
+            id="userRole"
+            class="text-red-400 text-xs"
+          >
             Usuario
           </p>
 
         </div>
 
         <button
+          type="button"
           onclick="logout()"
-          class="bg-zinc-800 w-10 h-10 rounded-xl"
+          class="bg-zinc-800 w-11 h-11 rounded-xl flex items-center justify-center"
         >
           <i class="fa-solid fa-right-from-bracket"></i>
         </button>
@@ -154,6 +195,7 @@
       </div>
 
     </div>
+
 
     <!-- SERVIDOR -->
 
@@ -207,6 +249,7 @@
 
     </div>
 
+
     <!-- NOTICIAS -->
 
     <div class="flex justify-between items-center mb-3">
@@ -216,6 +259,7 @@
       </h2>
 
       <button
+        type="button"
         onclick="showPage('noticias')"
         class="text-red-400 text-sm"
       >
@@ -228,7 +272,7 @@
 
       <div class="flex gap-4">
 
-        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
 
           <i class="fa-solid fa-bullhorn text-red-500"></i>
 
@@ -253,7 +297,9 @@
   </section>
 
 
-  <!-- ================= NOTICIAS ================= -->
+  <!-- =====================================================
+       NOTICIAS
+  ====================================================== -->
 
   <section id="noticias" class="page px-4 pt-6">
 
@@ -271,7 +317,7 @@
 
         <div class="flex gap-4">
 
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
 
             <i class="fa-solid fa-bullhorn text-red-500"></i>
 
@@ -298,7 +344,9 @@
   </section>
 
 
-  <!-- ================= REGLAS ================= -->
+  <!-- =====================================================
+       REGLAS
+  ====================================================== -->
 
   <section id="reglas" class="page px-4 pt-6">
 
@@ -315,8 +363,9 @@
       <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
 
         <button
+          type="button"
           onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
+          class="w-full p-5 flex justify-between items-center text-left"
         >
 
           <span>
@@ -347,8 +396,9 @@
       <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
 
         <button
+          type="button"
           onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
+          class="w-full p-5 flex justify-between items-center text-left"
         >
 
           <span>
@@ -377,8 +427,9 @@
       <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
 
         <button
+          type="button"
           onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
+          class="w-full p-5 flex justify-between items-center text-left"
         >
 
           <span>
@@ -407,8 +458,9 @@
       <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
 
         <button
+          type="button"
           onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
+          class="w-full p-5 flex justify-between items-center text-left"
         >
 
           <span>
@@ -438,7 +490,9 @@
   </section>
 
 
-  <!-- ================= STAFF ================= -->
+  <!-- =====================================================
+       STAFF
+  ====================================================== -->
 
   <section id="staff" class="page px-4 pt-6">
 
@@ -458,6 +512,7 @@
 
       <button
         id="adminButton"
+        type="button"
         onclick="openAdmin()"
         class="hidden bg-red-500 px-4 py-3 rounded-xl"
       >
@@ -468,7 +523,10 @@
 
     </div>
 
-    <div id="staffList" class="space-y-4">
+    <div
+      id="staffList"
+      class="space-y-4"
+    >
 
       <div class="text-center text-gray-500 py-10">
         Cargando Staff...
@@ -479,7 +537,9 @@
   </section>
 
 
-  <!-- ================= DISCORD ================= -->
+  <!-- =====================================================
+       DISCORD
+  ====================================================== -->
 
   <section id="discord" class="page px-4 pt-6">
 
@@ -511,8 +571,8 @@
       <a
         href="https://discord.gg/ukEZEvkgwX"
         target="_blank"
-        rel="noopener"
-        class="block bg-indigo-500 hover:bg-indigo-600 py-4 rounded-2xl font-bold"
+        rel="noopener noreferrer"
+        class="block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 py-4 rounded-2xl font-bold"
       >
 
         <i class="fa-brands fa-discord mr-2"></i>
@@ -526,7 +586,9 @@
   </section>
 
 
-  <!-- ================= ADMIN ================= -->
+  <!-- =====================================================
+       PANEL ADMIN
+  ====================================================== -->
 
   <section id="admin" class="page px-4 pt-6">
 
@@ -538,11 +600,15 @@
           Panel
         </h1>
 
-        <p id="adminRole" class="text-red-400 text-sm"></p>
+        <p
+          id="adminRole"
+          class="text-red-400 text-sm"
+        ></p>
 
       </div>
 
       <button
+        type="button"
         onclick="logout()"
         class="bg-zinc-800 px-4 py-3 rounded-xl"
       >
@@ -562,7 +628,10 @@
         Tus permisos
       </h2>
 
-      <div id="permissionsList" class="space-y-2"></div>
+      <div
+        id="permissionsList"
+        class="space-y-2"
+      ></div>
 
     </div>
 
@@ -582,6 +651,7 @@
         id="staffName"
         type="text"
         placeholder="Nombre"
+        autocomplete="off"
         class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
       >
 
@@ -589,6 +659,7 @@
         id="staffAvatar"
         type="url"
         placeholder="URL del avatar"
+        autocomplete="off"
         class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
       >
 
@@ -596,6 +667,7 @@
         id="staffDiscord"
         type="text"
         placeholder="Discord: @usuario"
+        autocomplete="off"
         class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
       >
 
@@ -604,16 +676,17 @@
         class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4"
       >
 
-        <option>Fundador</option>
-        <option>Administrador</option>
-        <option>Moderador</option>
-        <option>Soporte</option>
+        <option value="Fundador">Fundador</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Moderador">Moderador</option>
+        <option value="Soporte">Soporte</option>
 
       </select>
 
       <button
+        type="button"
         onclick="addStaff()"
-        class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold"
+        class="w-full bg-red-500 hover:bg-red-600 active:bg-red-700 py-3 rounded-xl font-bold"
       >
 
         <i class="fa-solid fa-plus mr-2"></i>
@@ -629,22 +702,28 @@
       Administrar Staff
     </h2>
 
-    <div id="adminStaffList" class="space-y-3"></div>
+    <div
+      id="adminStaffList"
+      class="space-y-3"
+    ></div>
 
   </section>
 
 </main>
 
 
-<!-- ================= NAVEGACIÓN ================= -->
+<!-- =====================================================
+     NAVEGACIÓN
+====================================================== -->
 
-<nav class="fixed bottom-0 left-0 right-0 z-50">
+<nav class="fixed bottom-0 left-0 right-0 z-50 safe-bottom">
 
   <div class="max-w-xl mx-auto glass border-t border-zinc-800">
 
     <div class="grid grid-cols-5 h-20">
 
       <button
+        type="button"
         onclick="showPage('inicio')"
         data-page="inicio"
         class="nav-btn nav-active flex flex-col items-center justify-center gap-1"
@@ -660,6 +739,7 @@
 
 
       <button
+        type="button"
         onclick="showPage('noticias')"
         data-page="noticias"
         class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
@@ -675,6 +755,7 @@
 
 
       <button
+        type="button"
         onclick="showPage('reglas')"
         data-page="reglas"
         class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
@@ -690,6 +771,7 @@
 
 
       <button
+        type="button"
         onclick="showPage('staff')"
         data-page="staff"
         class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
@@ -705,6 +787,7 @@
 
 
       <button
+        type="button"
         onclick="showPage('discord')"
         data-page="discord"
         class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
@@ -725,7 +808,9 @@
 </nav>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- =====================================================
+     LOGIN
+====================================================== -->
 
 <div
   id="loginModal"
@@ -752,9 +837,13 @@
 
     </div>
 
+
+    <!-- DISCORD -->
+
     <button
+      type="button"
       onclick="loginWithDiscord()"
-      class="w-full bg-indigo-500 hover:bg-indigo-600 py-3 rounded-xl font-bold discord-glow"
+      class="w-full bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 py-3 rounded-xl font-bold discord-glow"
     >
 
       <i class="fa-brands fa-discord mr-2"></i>
@@ -777,30 +866,39 @@
     </div>
 
 
+    <!-- CORREO -->
+
     <input
       id="loginEmail"
       type="email"
       placeholder="Correo electrónico"
+      autocomplete="email"
       class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
     >
+
 
     <input
       id="loginPassword"
       type="password"
       placeholder="Contraseña"
+      autocomplete="current-password"
       class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4 outline-none"
     >
 
+
     <button
+      type="button"
       onclick="login()"
-      class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold"
+      class="w-full bg-red-500 hover:bg-red-600 active:bg-red-700 py-3 rounded-xl font-bold"
     >
 
       INICIAR SESIÓN
 
     </button>
 
+
     <button
+      type="button"
       onclick="closeLogin()"
       class="w-full mt-3 text-gray-500 py-2"
     >
@@ -808,6 +906,7 @@
       Cancelar
 
     </button>
+
 
     <p
       id="loginError"
@@ -819,7 +918,9 @@
 </div>
 
 
-<!-- ================= EDITAR STAFF ================= -->
+<!-- =====================================================
+     EDITAR STAFF
+====================================================== -->
 
 <div
   id="editModal"
@@ -832,12 +933,14 @@
       Editar Staff
     </h2>
 
+
     <input
       id="editName"
       type="text"
       placeholder="Nombre"
       class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
     >
+
 
     <input
       id="editAvatar"
@@ -846,6 +949,7 @@
       class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
     >
 
+
     <input
       id="editDiscord"
       type="text"
@@ -853,169 +957,19 @@
       class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
     >
 
+
     <select
       id="editRole"
       class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-5"
     >
 
-      <option>Fundador</option>
-      <option>Administrador</option>
-      <option>Moderador</option>
-      <option>Soporte</option>
+      <option value="Fundador">Fundador</option>
+      <option value="Administrador">Administrador</option>
+      <option value="Moderador">Moderador</option>
+      <option value="Soporte">Soporte</option>
 
     </select>
 
-    <button
-      onclick="saveEdit()"
-      class="w-full bg-red-500 py-3 rounded-xl font-bold"
-    >
-
-      GUARDAR CAMBIOS
-
-    </button>
 
     <button
-      onclick="closeEdit()"
-      class="w-full text-gray-500 py-3"
-    >
-
-      Cancelar
-
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-const SUPABASE_URL =
-  "https://tsoifqxyarbewjkzrmzw.supabase.co";
-
-const SUPABASE_ANON_KEY =
-  "sb_publishable_ZnGeBJb-EMxv3T5khUFyBw_4OZSehz-";
-
-const supabaseClient =
-  supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY,
-    {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true
-      }
-    }
-  );
-
-
-let currentUser = null;
-let currentProfile = null;
-let editingStaffId = null;
-
-
-/* ================= PERMISOS ================= */
-
-const permissions = {
-
-  Fundador: [
-    "manage_staff",
-    "manage_news",
-    "manage_rules",
-    "manage_server",
-    "manage_permissions"
-  ],
-
-  Administrador: [
-    "manage_staff",
-    "manage_news",
-    "manage_rules"
-  ],
-
-  Moderador: [
-    "moderate"
-  ],
-
-  Soporte: [
-    "support"
-  ]
-
-};
-
-
-/* ================= NAVEGACIÓN ================= */
-
-function showPage(id) {
-
-  document
-    .querySelectorAll(".page")
-    .forEach(p => p.classList.remove("active"));
-
-  const page =
-    document.getElementById(id);
-
-  if (page) {
-    page.classList.add("active");
-  }
-
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(button => {
-
-      button.classList.remove("nav-active");
-      button.classList.add("text-gray-500");
-
-      if (button.dataset.page === id) {
-
-        button.classList.add("nav-active");
-        button.classList.remove("text-gray-500");
-
-      }
-
-    });
-
-  window.scrollTo(0, 0);
-}
-
-
-/* ================= ACORDEONES ================= */
-
-function toggleAccordion(button) {
-
-  const accordion =
-    button.parentElement;
-
-  accordion.classList.toggle("open");
-
-}
-
-
-/* ================= LOGIN DISCORD ================= */
-
-async function loginWithDiscord() {
-
-  const errorBox =
-    document.getElementById("loginError");
-
-  errorBox.classList.add("hidden");
-
-  const { error } =
-    await supabaseClient.auth.signInWithOAuth({
-
-      provider: "discord",
-
-      options: {
-        redirectTo: window.location.origin
-      }
-
-    });
-
-  if (error) {
-
-    console.error(error);
-
-    errorBox.textContent =
-      "No se pudo iniciar sesión con Discor
+     
