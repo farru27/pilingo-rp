@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -79,606 +80,964 @@
     .accordion.open .arrow {
       transform: rotate(180deg);
     }
+
+    .avatar-ring {
+      box-shadow: 0 0 0 3px rgba(239,68,68,.25);
+    }
   </style>
+
 </head>
 
 <body>
 
 <main class="max-w-xl mx-auto min-h-screen">
 
-  <!-- INICIO -->
+  <!-- =========================
+       INICIO
+  ========================== -->
+
   <section id="inicio" class="page active px-4 pt-6">
 
-    <div class="flex justify-between items-center mb-6">
-      <div>
-        <p class="text-gray-500 text-sm">Bienvenido a</p>
+```
+<div class="flex justify-between items-center mb-6">
 
-        <h1 class="text-3xl font-black">
-          PILINGO <span class="text-red-500">RP</span>
-        </h1>
-      </div>
-
-      <div class="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center">
-        <i class="fa-solid fa-gamepad text-red-500 text-xl"></i>
-      </div>
-    </div>
-
-    <!-- ESTADO -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5">
-
-      <div class="flex justify-between items-center">
-
-        <div>
-          <p class="text-gray-500 text-sm">Estado del servidor</p>
-
-          <div class="flex items-center gap-2 mt-1">
-            <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
-            <span class="text-green-400 font-bold">ONLINE</span>
-          </div>
-        </div>
-
-        <div class="text-right">
-          <p class="text-gray-500 text-sm">Jugadores</p>
-          <p class="font-bold text-xl">24/64</p>
-        </div>
-
-      </div>
-
-      <div class="mt-5 bg-black/40 rounded-2xl p-4">
-        <p class="text-gray-500 text-xs">IP DEL SERVIDOR</p>
-        <p class="font-bold mt-1">PRÓXIMAMENTE</p>
-      </div>
-
-    </div>
-
-    <!-- NOTICIA PRINCIPAL -->
-    <div class="flex justify-between items-center mb-3">
-      <h2 class="text-xl font-bold">Últimas noticias</h2>
-
-      <button
-        onclick="showPage('noticias')"
-        class="text-red-400 text-sm"
-      >
-        Ver todas
-      </button>
-    </div>
-
-    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-
-      <div class="flex gap-4">
-
-        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
-          <i class="fa-solid fa-bullhorn text-red-500"></i>
-        </div>
-
-        <div>
-          <h3 class="font-bold">
-            Bienvenidos a PILINGO RP
-          </h3>
-
-          <p class="text-gray-400 text-sm mt-1">
-            Estamos preparando todo para la apertura.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- NOTICIAS -->
-  <section id="noticias" class="page px-4 pt-6">
-
-    <h1 class="text-3xl font-black">Noticias</h1>
-
-    <p class="text-gray-500 mt-1 mb-6">
-      Novedades de PILINGO RP
+  <div>
+    <p class="text-gray-500 text-sm">
+      Bienvenido a
     </p>
-
-    <div id="newsList" class="space-y-4">
-
-      <article class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-
-        <div class="flex gap-4">
-
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
-            <i class="fa-solid fa-bullhorn text-red-500"></i>
-          </div>
-
-          <div>
-            <h2 class="font-bold">
-              Apertura de PILINGO RP
-            </h2>
-
-            <p class="text-gray-400 text-sm mt-2">
-              Muy pronto anunciaremos la apertura oficial del servidor.
-            </p>
-          </div>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </section>
-
-
-  <!-- REGLAS -->
-  <section id="reglas" class="page px-4 pt-6">
-
-    <h1 class="text-3xl font-black">Reglas</h1>
-
-    <p class="text-gray-500 mt-1 mb-6">
-      Reglas oficiales del servidor
-    </p>
-
-    <div class="space-y-3">
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button
-          onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
-        >
-          <span>
-            <i class="fa-solid fa-book text-red-500 mr-3"></i>
-            Reglas Generales
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm space-y-2">
-            <p>1. Respeta a todos los jugadores.</p>
-            <p>2. No utilices cheats.</p>
-            <p>3. No abuses de bugs.</p>
-            <p>4. Respeta al Staff.</p>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button
-          onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
-        >
-          <span>
-            <i class="fa-solid fa-brain text-purple-500 mr-3"></i>
-            MetaGaming
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm">
-            Está prohibido utilizar información obtenida fuera del personaje para obtener ventajas dentro del Roleplay.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button
-          onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
-        >
-          <span>
-            <i class="fa-solid fa-bolt text-yellow-500 mr-3"></i>
-            PowerGaming
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm">
-            No realices acciones imposibles o fuerces situaciones sobre otros jugadores.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button
-          onclick="toggleAccordion(this)"
-          class="w-full p-5 flex justify-between items-center"
-        >
-          <span>
-            <i class="fa-solid fa-users text-blue-500 mr-3"></i>
-            Facciones
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm">
-            Los miembros de las facciones deberán respetar las normas internas y las reglas generales.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- STAFF -->
-  <section id="staff" class="page px-4 pt-6">
-
-    <div class="flex justify-between items-center mb-6">
-
-      <div>
-        <h1 class="text-3xl font-black">Staff</h1>
-
-        <p class="text-gray-500">
-          Equipo de PILINGO RP
-        </p>
-      </div>
-
-      <button
-        id="adminButton"
-        onclick="openAdmin()"
-        class="bg-red-500 px-4 py-3 rounded-xl"
-      >
-        <i class="fa-solid fa-lock"></i>
-      </button>
-
-    </div>
-
-    <div id="staffList" class="space-y-4">
-
-      <div class="text-center text-gray-500 py-10">
-        Cargando Staff...
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- DISCORD -->
-  <section id="discord" class="page px-4 pt-6">
 
     <h1 class="text-3xl font-black">
-      Discord
+      PILINGO <span class="text-red-500">RP</span>
     </h1>
+  </div>
 
-    <p class="text-gray-500 mt-1 mb-6">
-      Únete a nuestra comunidad
-    </p>
+  <div
+    class="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center"
+  >
+    <i class="fa-solid fa-gamepad text-red-500 text-xl"></i>
+  </div>
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center">
+</div>
 
-      <div class="w-20 h-20 mx-auto bg-indigo-500/10 rounded-3xl flex items-center justify-center mb-5">
-        <i class="fa-brands fa-discord text-indigo-400 text-4xl"></i>
-      </div>
 
-      <h2 class="text-2xl font-black">
-        PILINGO RP
-      </h2>
+<!-- Usuario conectado -->
 
-      <p class="text-gray-400 text-sm mt-3 mb-6">
-        Únete al Discord oficial para conocer novedades, eventos y recibir soporte.
+<div
+  id="userCard"
+  class="hidden bg-zinc-900 border border-zinc-800 rounded-2xl p-4 mb-5"
+>
+
+  <div class="flex items-center gap-3">
+
+    <img
+      id="userAvatar"
+      src="https://i.pravatar.cc/150"
+      class="w-12 h-12 rounded-xl object-cover avatar-ring"
+    >
+
+    <div class="flex-1">
+
+      <p class="text-xs text-gray-500">
+        CONECTADO COMO
       </p>
 
-      <a
-        href="https://discord.gg/ukEZEvkgwX"
-        target="_blank"
-        rel="noopener"
-        class="block bg-indigo-500 hover:bg-indigo-600 py-4 rounded-2xl font-bold"
+      <p
+        id="userName"
+        class="font-bold"
       >
-        <i class="fa-brands fa-discord mr-2"></i>
-        UNIRME AL DISCORD
-      </a>
+        Usuario
+      </p>
+
+      <p
+        id="userRole"
+        class="text-red-400 text-xs"
+      >
+        Usuario
+      </p>
 
     </div>
+
+    <button
+      onclick="logout()"
+      class="bg-zinc-800 w-10 h-10 rounded-xl"
+    >
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- Servidor -->
+
+<div
+  class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5"
+>
+
+  <div class="flex justify-between items-center">
+
+    <div>
+
+      <p class="text-gray-500 text-sm">
+        Estado del servidor
+      </p>
+
+      <div class="flex items-center gap-2 mt-1">
+
+        <span
+          class="w-3 h-3 rounded-full bg-green-500 animate-pulse"
+        ></span>
+
+        <span class="text-green-400 font-bold">
+          ONLINE
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="text-right">
+
+      <p class="text-gray-500 text-sm">
+        Jugadores
+      </p>
+
+      <p class="font-bold text-xl">
+        24/64
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="mt-5 bg-black/40 rounded-2xl p-4">
+
+    <p class="text-gray-500 text-xs">
+      IP DEL SERVIDOR
+    </p>
+
+    <p class="font-bold mt-1">
+      PRÓXIMAMENTE
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="flex justify-between items-center mb-3">
+
+  <h2 class="text-xl font-bold">
+    Últimas noticias
+  </h2>
+
+  <button
+    onclick="showPage('noticias')"
+    class="text-red-400 text-sm"
+  >
+    Ver todas
+  </button>
+
+</div>
+
+
+<div
+  class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5"
+>
+
+  <div class="flex gap-4">
+
+    <div
+      class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center"
+    >
+      <i class="fa-solid fa-bullhorn text-red-500"></i>
+    </div>
+
+    <div>
+
+      <h3 class="font-bold">
+        Bienvenidos a PILINGO RP
+      </h3>
+
+      <p class="text-gray-400 text-sm mt-1">
+        Estamos preparando todo para la apertura.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+```
 
   </section>
 
+  <!-- =========================
+       NOTICIAS
+  ========================== -->
 
-  <!-- PANEL ADMIN -->
-  <section id="admin" class="page px-4 pt-6">
+  <section id="noticias" class="page px-4 pt-6">
 
-    <div class="flex justify-between items-center mb-6">
+```
+<h1 class="text-3xl font-black">
+  Noticias
+</h1>
 
-      <div>
-        <h1 class="text-3xl font-black">
-          Panel
-        </h1>
+<p class="text-gray-500 mt-1 mb-6">
+  Novedades de PILINGO RP
+</p>
 
-        <p id="adminRole" class="text-red-400 text-sm"></p>
+<div id="newsList" class="space-y-4">
+
+  <article
+    class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5"
+  >
+
+    <div class="flex gap-4">
+
+      <div
+        class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center"
+      >
+        <i class="fa-solid fa-bullhorn text-red-500"></i>
       </div>
 
-      <button
-        onclick="logout()"
-        class="bg-zinc-800 px-4 py-3 rounded-xl"
-      >
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </button>
+      <div>
+
+        <h2 class="font-bold">
+          Apertura de PILINGO RP
+        </h2>
+
+        <p class="text-gray-400 text-sm mt-2">
+          Muy pronto anunciaremos la apertura oficial del servidor.
+        </p>
+
+      </div>
 
     </div>
 
+  </article>
 
-    <!-- PERMISOS -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+</div>
+```
 
-      <h2 class="font-bold mb-4">
-        Tus permisos
-      </h2>
+  </section>
 
-      <div id="permissionsList" class="space-y-2"></div>
+  <!-- =========================
+       REGLAS
+  ========================== -->
 
-    </div>
+  <section id="reglas" class="page px-4 pt-6">
+
+```
+<h1 class="text-3xl font-black">
+  Reglas
+</h1>
+
+<p class="text-gray-500 mt-1 mb-6">
+  Reglas oficiales del servidor
+</p>
 
 
-    <!-- AGREGAR STAFF -->
-    <div
-      id="addStaffCard"
-      class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5"
+<div class="space-y-3">
+
+  <div
+    class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl"
+  >
+
+    <button
+      onclick="toggleAccordion(this)"
+      class="w-full p-5 flex justify-between items-center"
     >
 
-      <h2 class="font-bold text-lg mb-4">
-        Agregar Staff
-      </h2>
+      <span>
 
-      <input
-        id="staffName"
-        type="text"
-        placeholder="Nombre"
-        class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
+        <i
+          class="fa-solid fa-book text-red-500 mr-3"
+        ></i>
+
+        Reglas Generales
+
+      </span>
+
+      <i
+        class="fa-solid fa-chevron-down arrow transition"
+      ></i>
+
+    </button>
+
+
+    <div class="accordion-content">
+
+      <div
+        class="px-5 pb-5 text-gray-400 text-sm space-y-2"
       >
 
-      <input
-        id="staffAvatar"
-        type="url"
-        placeholder="URL del avatar"
-        class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
-      >
+        <p>1. Respeta a todos los jugadores.</p>
+        <p>2. No utilices cheats.</p>
+        <p>3. No abuses de bugs.</p>
+        <p>4. Respeta al Staff.</p>
 
-      <input
-        id="staffDiscord"
-        type="text"
-        placeholder="Discord: elcaiman13"
-        class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
-      >
-
-      <select
-        id="staffRole"
-        class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4"
-      >
-        <option>Fundador</option>
-        <option>Administrador</option>
-        <option>Moderador</option>
-        <option>Soporte</option>
-      </select>
-
-      <button
-        onclick="addStaff()"
-        class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold"
-      >
-        <i class="fa-solid fa-plus mr-2"></i>
-        AGREGAR STAFF
-      </button>
+      </div>
 
     </div>
 
+  </div>
 
-    <!-- ADMINISTRAR STAFF -->
-    <h2 class="font-bold text-lg mb-4">
-      Administrar Staff
-    </h2>
 
-    <div id="adminStaffList" class="space-y-3"></div>
+  <div
+    class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl"
+  >
+
+    <button
+      onclick="toggleAccordion(this)"
+      class="w-full p-5 flex justify-between items-center"
+    >
+
+      <span>
+
+        <i
+          class="fa-solid fa-brain text-purple-500 mr-3"
+        ></i>
+
+        MetaGaming
+
+      </span>
+
+      <i
+        class="fa-solid fa-chevron-down arrow transition"
+      ></i>
+
+    </button>
+
+
+    <div class="accordion-content">
+
+      <div
+        class="px-5 pb-5 text-gray-400 text-sm"
+      >
+        Está prohibido utilizar información obtenida fuera del personaje para obtener ventajas dentro del Roleplay.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl"
+  >
+
+    <button
+      onclick="toggleAccordion(this)"
+      class="w-full p-5 flex justify-between items-center"
+    >
+
+      <span>
+
+        <i
+          class="fa-solid fa-bolt text-yellow-500 mr-3"
+        ></i>
+
+        PowerGaming
+
+      </span>
+
+      <i
+        class="fa-solid fa-chevron-down arrow transition"
+      ></i>
+
+    </button>
+
+
+    <div class="accordion-content">
+
+      <div
+        class="px-5 pb-5 text-gray-400 text-sm"
+      >
+        No realices acciones imposibles o fuerces situaciones sobre otros jugadores.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl"
+  >
+
+    <button
+      onclick="toggleAccordion(this)"
+      class="w-full p-5 flex justify-between items-center"
+    >
+
+      <span>
+
+        <i
+          class="fa-solid fa-users text-blue-500 mr-3"
+        ></i>
+
+        Facciones
+
+      </span>
+
+      <i
+        class="fa-solid fa-chevron-down arrow transition"
+      ></i>
+
+    </button>
+
+
+    <div class="accordion-content">
+
+      <div
+        class="px-5 pb-5 text-gray-400 text-sm"
+      >
+        Los miembros de las facciones deberán respetar las normas internas y las reglas generales.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================
+       STAFF
+  ========================== -->
+
+  <section id="staff" class="page px-4 pt-6">
+
+```
+<div class="flex justify-between items-center mb-6">
+
+  <div>
+
+    <h1 class="text-3xl font-black">
+      Staff
+    </h1>
+
+    <p class="text-gray-500">
+      Equipo de PILINGO RP
+    </p>
+
+  </div>
+
+
+  <button
+    id="adminButton"
+    onclick="openAdmin()"
+    class="bg-red-500 px-4 py-3 rounded-xl"
+  >
+
+    <i class="fa-solid fa-lock"></i>
+
+  </button>
+
+</div>
+
+
+<div
+  id="staffList"
+  class="space-y-4"
+>
+
+  <div
+    class="text-center text-gray-500 py-10"
+  >
+    Cargando Staff...
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================
+       DISCORD
+  ========================== -->
+
+  <section id="discord" class="page px-4 pt-6">
+
+```
+<h1 class="text-3xl font-black">
+  Discord
+</h1>
+
+<p class="text-gray-500 mt-1 mb-6">
+  Únete a nuestra comunidad
+</p>
+
+
+<div
+  class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center"
+>
+
+  <div
+    class="w-20 h-20 mx-auto bg-indigo-500/10 rounded-3xl flex items-center justify-center mb-5"
+  >
+
+    <i
+      class="fa-brands fa-discord text-indigo-400 text-4xl"
+    ></i>
+
+  </div>
+
+
+  <h2 class="text-2xl font-black">
+    PILINGO RP
+  </h2>
+
+
+  <p class="text-gray-400 text-sm mt-3 mb-6">
+    Únete al Discord oficial para conocer novedades, eventos y recibir soporte.
+  </p>
+
+
+  <a
+    href="https://discord.gg/ukEZEvkgwX"
+    target="_blank"
+    rel="noopener"
+    class="block bg-indigo-500 hover:bg-indigo-600 py-4 rounded-2xl font-bold"
+  >
+
+    <i class="fa-brands fa-discord mr-2"></i>
+
+    UNIRME AL DISCORD
+
+  </a>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================
+       PANEL ADMIN
+  ========================== -->
+
+  <section id="admin" class="page px-4 pt-6">
+
+```
+<div class="flex justify-between items-center mb-6">
+
+  <div>
+
+    <h1 class="text-3xl font-black">
+      Panel
+    </h1>
+
+    <p
+      id="adminRole"
+      class="text-red-400 text-sm"
+    ></p>
+
+  </div>
+
+
+  <button
+    onclick="logout()"
+    class="bg-zinc-800 px-4 py-3 rounded-xl"
+  >
+
+    <i
+      class="fa-solid fa-right-from-bracket"
+    ></i>
+
+  </button>
+
+</div>
+
+
+<!-- PERMISOS -->
+
+<div
+  class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5"
+>
+
+  <h2 class="font-bold mb-4">
+    Tus permisos
+  </h2>
+
+  <div
+    id="permissionsList"
+    class="space-y-2"
+  ></div>
+
+</div>
+
+
+<!-- AGREGAR STAFF -->
+
+<div
+  id="addStaffCard"
+  class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5"
+>
+
+  <h2 class="font-bold text-lg mb-4">
+    Agregar Staff
+  </h2>
+
+
+  <input
+    id="staffName"
+    type="text"
+    placeholder="Nombre"
+    class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
+  >
+
+
+  <input
+    id="staffAvatar"
+    type="url"
+    placeholder="URL del avatar — opcional"
+    class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
+  >
+
+
+  <input
+    id="staffDiscord"
+    type="text"
+    placeholder="Discord: elcaiman13"
+    class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
+  >
+
+
+  <select
+    id="staffRole"
+    class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4"
+  >
+
+    <option>Fundador</option>
+    <option>Administrador</option>
+    <option>Moderador</option>
+    <option>Soporte</option>
+
+  </select>
+
+
+  <button
+    onclick="addStaff()"
+    class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold"
+  >
+
+    <i class="fa-solid fa-plus mr-2"></i>
+
+    AGREGAR STAFF
+
+  </button>
+
+</div>
+
+
+<h2 class="font-bold text-lg mb-4">
+  Administrar Staff
+</h2>
+
+
+<div
+  id="adminStaffList"
+  class="space-y-3"
+></div>
+```
 
   </section>
 
 </main>
 
+<!-- =========================
+     NAVEGACIÓN
+========================== -->
 
-<!-- NAVEGACIÓN -->
 <nav class="fixed bottom-0 left-0 right-0 z-50">
 
-  <div class="max-w-xl mx-auto glass border-t border-zinc-800">
+  <div
+    class="max-w-xl mx-auto glass border-t border-zinc-800"
+  >
 
-    <div class="grid grid-cols-5 h-20">
+```
+<div class="grid grid-cols-5 h-20">
 
-      <button
-        onclick="showPage('inicio')"
-        data-page="inicio"
-        class="nav-btn nav-active flex flex-col items-center justify-center gap-1"
-      >
-        <i class="fa-solid fa-house"></i>
-        <span class="text-xs">Inicio</span>
-      </button>
 
-      <button
-        onclick="showPage('noticias')"
-        data-page="noticias"
-        class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
-      >
-        <i class="fa-solid fa-newspaper"></i>
-        <span class="text-xs">Noticias</span>
-      </button>
+  <button
+    onclick="showPage('inicio')"
+    data-page="inicio"
+    class="nav-btn nav-active flex flex-col items-center justify-center gap-1"
+  >
 
-      <button
-        onclick="showPage('reglas')"
-        data-page="reglas"
-        class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
-      >
-        <i class="fa-solid fa-book"></i>
-        <span class="text-xs">Reglas</span>
-      </button>
+    <i class="fa-solid fa-house"></i>
 
-      <button
-        onclick="showPage('staff')"
-        data-page="staff"
-        class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
-      >
-        <i class="fa-solid fa-users"></i>
-        <span class="text-xs">Staff</span>
-      </button>
+    <span class="text-xs">
+      Inicio
+    </span>
 
-      <button
-        onclick="showPage('discord')"
-        data-page="discord"
-        class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
-      >
-        <i class="fa-brands fa-discord"></i>
-        <span class="text-xs">Discord</span>
-      </button>
+  </button>
 
-    </div>
+
+  <button
+    onclick="showPage('noticias')"
+    data-page="noticias"
+    class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
+  >
+
+    <i class="fa-solid fa-newspaper"></i>
+
+    <span class="text-xs">
+      Noticias
+    </span>
+
+  </button>
+
+
+  <button
+    onclick="showPage('reglas')"
+    data-page="reglas"
+    class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
+  >
+
+    <i class="fa-solid fa-book"></i>
+
+    <span class="text-xs">
+      Reglas
+    </span>
+
+  </button>
+
+
+  <button
+    onclick="showPage('staff')"
+    data-page="staff"
+    class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
+  >
+
+    <i class="fa-solid fa-users"></i>
+
+    <span class="text-xs">
+      Staff
+    </span>
+
+  </button>
+
+
+  <button
+    onclick="showPage('discord')"
+    data-page="discord"
+    class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1"
+  >
+
+    <i class="fa-brands fa-discord"></i>
+
+    <span class="text-xs">
+      Discord
+    </span>
+
+  </button>
+
+</div>
+```
 
   </div>
 
 </nav>
 
+<!-- =========================
+     LOGIN
+========================== -->
 
-<!-- LOGIN -->
 <div
   id="loginModal"
   class="modal fixed inset-0 z-[100] bg-black/80 items-center justify-center px-5"
 >
 
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 w-full max-w-md">
+  <div
+    class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 w-full max-w-md"
+  >
 
-    <div class="text-center mb-6">
+```
+<div class="text-center mb-6">
 
-      <div class="w-16 h-16 mx-auto bg-red-500/10 rounded-2xl flex items-center justify-center mb-4">
-        <i class="fa-solid fa-lock text-red-500 text-2xl"></i>
-      </div>
+  <div
+    class="w-16 h-16 mx-auto bg-red-500/10 rounded-2xl flex items-center justify-center mb-4"
+  >
 
-      <h2 class="text-2xl font-black">
-        Panel Staff
-      </h2>
+    <i
+      class="fa-solid fa-lock text-red-500 text-2xl"
+    ></i>
 
-      <p class="text-gray-500 text-sm mt-1">
-        Inicia sesión para continuar
-      </p>
+  </div>
 
-    </div>
 
-    <input
-      id="loginEmail"
-      type="email"
-      placeholder="Correo electrónico"
-      class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
-    >
+  <h2 class="text-2xl font-black">
+    Panel Staff
+  </h2>
 
-    <input
-      id="loginPassword"
-      type="password"
-      placeholder="Contraseña"
-      class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4 outline-none"
-    >
 
-    <button
-      onclick="login()"
-      class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold"
-    >
-      INICIAR SESIÓN
-    </button>
+  <p class="text-gray-500 text-sm mt-1">
+    Inicia sesión para continuar
+  </p>
 
-    <button
-      onclick="closeLogin()"
-      class="w-full mt-3 text-gray-500 py-2"
-    >
-      Cancelar
-    </button>
+</div>
 
-    <p
-      id="loginError"
-      class="text-red-400 text-sm text-center mt-3 hidden"
-    ></p>
+
+<!-- DISCORD -->
+
+<button
+  onclick="loginWithDiscord()"
+  class="w-full bg-indigo-500 hover:bg-indigo-600 py-3 rounded-xl font-bold"
+>
+
+  <i class="fa-brands fa-discord mr-2"></i>
+
+  CONTINUAR CON DISCORD
+
+</button>
+
+
+<div class="flex items-center gap-3 my-5">
+
+  <div class="h-px bg-zinc-800 flex-1"></div>
+
+  <span class="text-gray-600 text-xs">
+    O
+  </span>
+
+  <div class="h-px bg-zinc-800 flex-1"></div>
+
+</div>
+
+
+<!-- EMAIL -->
+
+<input
+  id="loginEmail"
+  type="email"
+  placeholder="Correo electrónico"
+  class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none"
+>
+
+
+<input
+  id="loginPassword"
+  type="password"
+  placeholder="Contraseña"
+  class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4 outline-none"
+>
+
+
+<button
+  onclick="login()"
+  class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold"
+>
+
+  INICIAR SESIÓN
+
+</button>
+
+
+<button
+  onclick="closeLogin()"
+  class="w-full mt-3 text-gray-500 py-2"
+>
+
+  Cancelar
+
+</button>
+
+
+<p
+  id="loginError"
+  class="text-red-400 text-sm text-center mt-3 hidden"
+></p>
+```
 
   </div>
 
 </div>
 
+<!-- =========================
+     EDITAR STAFF
+========================== -->
 
-<!-- EDITAR STAFF -->
 <div
   id="editModal"
   class="modal fixed inset-0 z-[100] bg-black/80 items-center justify-center px-5"
 >
 
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 w-full max-w-md">
+  <div
+    class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 w-full max-w-md"
+  >
 
-    <h2 class="text-2xl font-black mb-5">
-      Editar Staff
-    </h2>
+```
+<h2 class="text-2xl font-black mb-5">
+  Editar Staff
+</h2>
 
-    <input
-      id="editName"
-      type="text"
-      placeholder="Nombre"
-      class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
-    >
 
-    <input
-      id="editAvatar"
-      type="url"
-      placeholder="URL avatar"
-      class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
-    >
+<input
+  id="editName"
+  type="text"
+  placeholder="Nombre"
+  class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
+>
 
-    <input
-      id="editDiscord"
-      type="text"
-      placeholder="Discord"
-      class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
-    >
 
-    <select
-      id="editRole"
-      class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-5"
-    >
-      <option>Fundador</option>
-      <option>Administrador</option>
-      <option>Moderador</option>
-      <option>Soporte</option>
-    </select>
+<input
+  id="editAvatar"
+  type="url"
+  placeholder="URL avatar"
+  class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
+>
 
-    <button
-      onclick="saveEdit()"
-      class="w-full bg-red-500 py-3 rounded-xl font-bold"
-    >
-      GUARDAR CAMBIOS
-    </button>
 
-    <button
-      onclick="closeEdit()"
-      class="w-full text-gray-500 py-3"
-    >
-      Cancelar
-    </button>
+<input
+  id="editDiscord"
+  type="text"
+  placeholder="Discord"
+  class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3"
+>
+
+
+<select
+  id="editRole"
+  class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-5"
+>
+
+  <option>Fundador</option>
+  <option>Administrador</option>
+  <option>Moderador</option>
+  <option>Soporte</option>
+
+</select>
+
+
+<button
+  onclick="saveEdit()"
+  class="w-full bg-red-500 py-3 rounded-xl font-bold"
+>
+
+  GUARDAR CAMBIOS
+
+</button>
+
+
+<button
+  onclick="closeEdit()"
+  class="w-full text-gray-500 py-3"
+>
+
+  Cancelar
+
+</button>
+```
 
   </div>
 
 </div>
-
 
 <script>
 
@@ -734,7 +1093,9 @@ const permissions = {
 
   Soporte: [
     "support"
-  ]
+  ],
+
+  Usuario: []
 
 };
 
@@ -747,13 +1108,19 @@ function showPage(id) {
 
   document
     .querySelectorAll(".page")
-    .forEach(page => page.classList.remove("active"));
+    .forEach(page =>
+      page.classList.remove("active")
+    );
 
-  const page = document.getElementById(id);
+
+  const page =
+    document.getElementById(id);
+
 
   if (page) {
     page.classList.add("active");
   }
+
 
   document
     .querySelectorAll(".nav-btn")
@@ -761,6 +1128,7 @@ function showPage(id) {
 
       button.classList.remove("nav-active");
       button.classList.add("text-gray-500");
+
 
       if (button.dataset.page === id) {
 
@@ -771,7 +1139,9 @@ function showPage(id) {
 
     });
 
+
   window.scrollTo(0, 0);
+
 }
 
 
@@ -786,14 +1156,18 @@ function toggleAccordion(button) {
 
 
 /* =========================================
-   LOGIN
+   LOGIN ADMIN
 ========================================= */
 
 function openAdmin() {
 
-  if (currentUser && currentProfile) {
+  if (
+    currentUser &&
+    currentProfile
+  ) {
 
     showPage("admin");
+
     updateAdminPanel();
 
   } else {
@@ -818,18 +1192,31 @@ function closeLogin() {
 }
 
 
+/* =========================================
+   LOGIN CON EMAIL
+========================================= */
+
 async function login() {
 
   const email =
-    document.getElementById("loginEmail").value.trim();
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim();
+
 
   const password =
-    document.getElementById("loginPassword").value;
+    document
+      .getElementById("loginPassword")
+      .value;
+
 
   const error =
     document.getElementById("loginError");
 
+
   error.classList.add("hidden");
+
 
   if (!email || !password) {
 
@@ -839,13 +1226,21 @@ async function login() {
     error.classList.remove("hidden");
 
     return;
+
   }
 
-  const { data, error: authError } =
+
+  const {
+    data,
+    error: authError
+  } =
     await supabaseClient.auth.signInWithPassword({
+
       email,
       password
+
     });
+
 
   if (authError) {
 
@@ -855,11 +1250,16 @@ async function login() {
     error.classList.remove("hidden");
 
     return;
+
   }
 
-  currentUser = data.user;
+
+  currentUser =
+    data.user;
+
 
   await loadProfile();
+
 
   if (!currentProfile) {
 
@@ -868,19 +1268,18 @@ async function login() {
     currentUser = null;
 
     error.textContent =
-      "Tu cuenta no tiene permisos de Staff.";
+      "Tu cuenta no tiene permisos.";
 
     error.classList.remove("hidden");
 
     return;
+
   }
+
 
   closeLogin();
 
-  document
-    .getElementById("adminButton")
-    .classList
-    .remove("hidden");
+  updateUserCard();
 
   showPage("admin");
 
@@ -890,7 +1289,46 @@ async function login() {
 
 
 /* =========================================
-   PERFIL
+   LOGIN CON DISCORD
+========================================= */
+
+async function loginWithDiscord() {
+
+  const {
+    error
+  } =
+    await supabaseClient.auth.signInWithOAuth({
+
+      provider: "discord",
+
+      options: {
+
+        redirectTo:
+          window.location.origin
+
+      }
+
+    });
+
+
+  if (error) {
+
+    const loginError =
+      document.getElementById("loginError");
+
+    loginError.textContent =
+      "No se pudo iniciar sesión con Discord: " +
+      error.message;
+
+    loginError.classList.remove("hidden");
+
+  }
+
+}
+
+
+/* =========================================
+   PERFIL SUPABASE
 ========================================= */
 
 async function loadProfile() {
@@ -899,26 +1337,96 @@ async function loadProfile() {
     return;
   }
 
-  const { data, error } =
+
+  const {
+    data,
+    error
+  } =
     await supabaseClient
       .from("profiles")
       .select("*")
       .eq("id", currentUser.id)
       .single();
 
+
   if (error) {
 
-    console.error(
-      "Error cargando perfil:",
-      error
+    console.log(
+      "Perfil no encontrado:",
+      error.message
     );
 
     currentProfile = null;
 
     return;
+
   }
 
-  currentProfile = data;
+
+  currentProfile =
+    data;
+
+}
+
+
+/* =========================================
+   ACTUALIZAR USUARIO
+========================================= */
+
+function updateUserCard() {
+
+  const card =
+    document.getElementById("userCard");
+
+
+  if (!currentUser) {
+
+    card.classList.add("hidden");
+
+    return;
+
+  }
+
+
+  card.classList.remove("hidden");
+
+
+  const metadata =
+    currentUser.user_metadata || {};
+
+
+  const discordName =
+    metadata.full_name ||
+    metadata.name ||
+    metadata.user_name ||
+    metadata.preferred_username ||
+    currentUser.email ||
+    "Usuario";
+
+
+  const avatar =
+    metadata.avatar_url ||
+    metadata.picture ||
+    "https://i.pravatar.cc/150";
+
+
+  document
+    .getElementById("userName")
+    .textContent =
+      discordName;
+
+
+  document
+    .getElementById("userAvatar")
+    .src =
+      avatar;
+
+
+  document
+    .getElementById("userRole")
+    .textContent =
+      currentProfile?.role ||
+      "Usuario";
 
 }
 
@@ -931,7 +1439,9 @@ function hasPermission(permission) {
 
   return !!(
     currentProfile &&
-    permissions[currentProfile.role]?.includes(permission)
+    permissions[
+      currentProfile.role
+    ]?.includes(permission)
   );
 
 }
@@ -964,7 +1474,9 @@ function formatPermission(permission) {
 
   };
 
-  return names[permission] || permission;
+
+  return names[permission] ||
+    permission;
 
 }
 
@@ -1018,7 +1530,7 @@ function escapeHTML(value) {
 
 
 /* =========================================
-   CARGAR STAFF PÚBLICO
+   CARGAR STAFF
 ========================================= */
 
 async function loadStaff() {
@@ -1026,50 +1538,61 @@ async function loadStaff() {
   const box =
     document.getElementById("staffList");
 
+
   const {
     data,
     error
-  } = await supabaseClient
-    .from("staff")
-    .select("*")
-    .order("created_at", {
-      ascending: true
-    });
+  } =
+    await supabaseClient
+      .from("staff")
+      .select("*")
+      .order("created_at", {
+        ascending: true
+      });
 
 
   if (error) {
 
-    console.error(
-      "Error cargando Staff:",
-      error
-    );
+    console.error(error);
 
     box.innerHTML = `
+
       <div class="text-center text-red-400 py-10">
+
         No se pudo cargar el Staff.
+
       </div>
+
     `;
 
     return;
+
   }
 
 
   if (!data || data.length === 0) {
 
     box.innerHTML = `
+
       <div class="text-center text-gray-500 py-10">
+
         Todavía no hay miembros del Staff.
+
       </div>
+
     `;
 
     return;
+
   }
 
 
   box.innerHTML =
     data.map(member => `
 
-      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+      <div
+        class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5"
+      >
 
         <div class="flex items-center gap-4">
 
@@ -1082,26 +1605,37 @@ async function loadStaff() {
             onerror="this.src='https://i.pravatar.cc/150'"
           >
 
+
           <div class="flex-1">
 
             <h2 class="font-bold text-lg">
               ${escapeHTML(member.name)}
             </h2>
 
-            <p class="${roleColor(member.rol)} font-semibold text-sm">
+
+            <p
+              class="${roleColor(member.rol)} font-semibold text-sm"
+            >
               ${escapeHTML(member.rol)}
             </p>
 
+
             <p class="text-gray-500 text-xs mt-1">
+
               Discord:
               ${escapeHTML(
-                member.discord || "No indicado"
+                member.discord ||
+                "No indicado"
               )}
+
             </p>
 
           </div>
 
-          <i class="${roleIcon(member.rol)} text-xl"></i>
+
+          <i
+            class="${roleIcon(member.rol)} text-xl"
+          ></i>
 
         </div>
 
@@ -1122,28 +1656,42 @@ function updateAdminPanel() {
     return;
   }
 
-  document.getElementById("adminRole").textContent =
-    currentProfile.role;
+
+  document
+    .getElementById("adminRole")
+    .textContent =
+      currentProfile.role;
 
 
   const box =
-    document.getElementById("permissionsList");
+    document.getElementById(
+      "permissionsList"
+    );
+
 
   box.innerHTML = "";
 
 
   (
-    permissions[currentProfile.role] || []
+    permissions[
+      currentProfile.role
+    ] || []
   ).forEach(permission => {
 
     box.innerHTML += `
 
-      <div class="flex items-center gap-3 text-sm">
+      <div
+        class="flex items-center gap-3 text-sm"
+      >
 
-        <i class="fa-solid fa-check text-green-500"></i>
+        <i
+          class="fa-solid fa-check text-green-500"
+        ></i>
 
         <span class="text-gray-400">
+
           ${formatPermission(permission)}
+
         </span>
 
       </div>
@@ -1168,71 +1716,69 @@ function updateAdminPanel() {
 
 
 /* =========================================
-   STAFF EN PANEL
+   STAFF ADMIN
 ========================================= */
 
 async function loadAdminStaff() {
 
   const box =
-    document.getElementById("adminStaffList");
+    document.getElementById(
+      "adminStaffList"
+    );
 
 
   if (!hasPermission("manage_staff")) {
 
     box.innerHTML = `
+
       <p class="text-gray-500 text-sm">
+
         No tienes permiso para administrar Staff.
+
       </p>
+
     `;
 
     return;
+
   }
 
 
   const {
     data,
     error
-  } = await supabaseClient
-    .from("staff")
-    .select("*")
-    .order("created_at", {
-      ascending: true
-    });
+  } =
+    await supabaseClient
+      .from("staff")
+      .select("*")
+      .order("created_at", {
+        ascending: true
+      });
 
 
   if (error) {
 
-    console.error(
-      "Error panel Staff:",
-      error
-    );
-
     box.innerHTML = `
+
       <p class="text-red-400">
+
         Error cargando Staff.
+
       </p>
+
     `;
 
     return;
-  }
 
-
-  if (!data || data.length === 0) {
-
-    box.innerHTML = `
-      <p class="text-gray-500">
-        No hay miembros todavía.
-      </p>
-    `;
-
-    return;
   }
 
 
   box.innerHTML =
-    data.map(member => `
+    (data || []).map(member => `
 
-      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+      <div
+        class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"
+      >
 
         <div class="flex items-center gap-3">
 
@@ -1244,18 +1790,31 @@ async function loadAdminStaff() {
             class="w-12 h-12 rounded-xl object-cover"
           >
 
+
           <div class="flex-1">
 
             <p class="font-bold">
+
               ${escapeHTML(member.name)}
+
             </p>
 
-            <p class="${roleColor(member.rol)} text-xs">
+
+            <p
+              class="${roleColor(member.rol)} text-xs"
+            >
+
               ${escapeHTML(member.rol)}
+
             </p>
+
 
             <p class="text-gray-500 text-xs">
-              ${escapeHTML(member.discord || "")}
+
+              ${escapeHTML(
+                member.discord || ""
+              )}
+
             </p>
 
           </div>
@@ -1265,7 +1824,9 @@ async function loadAdminStaff() {
             onclick="editStaff('${member.id}')"
             class="bg-zinc-800 w-10 h-10 rounded-xl"
           >
+
             <i class="fa-solid fa-pen"></i>
+
           </button>
 
 
@@ -1273,7 +1834,9 @@ async function loadAdminStaff() {
             onclick="deleteStaff('${member.id}')"
             class="bg-red-500/10 text-red-400 w-10 h-10 rounded-xl"
           >
+
             <i class="fa-solid fa-trash"></i>
+
           </button>
 
         </div>
@@ -1286,7 +1849,7 @@ async function loadAdminStaff() {
 
 
 /* =========================================
-   AGREGAR STAFF AUTOMÁTICAMENTE
+   AGREGAR STAFF
 ========================================= */
 
 async function addStaff() {
@@ -1298,6 +1861,7 @@ async function addStaff() {
     );
 
     return;
+
   }
 
 
@@ -1330,48 +1894,58 @@ async function addStaff() {
 
   if (!name) {
 
-    alert("Escribe el nombre.");
+    alert(
+      "Escribe el nombre."
+    );
 
     return;
+
   }
 
 
   const {
     error
-  } = await supabaseClient
-    .from("staff")
-    .insert({
+  } =
+    await supabaseClient
+      .from("staff")
+      .insert({
 
-      name: name,
+        name: name,
 
-      rol: rol,
+        rol: rol,
 
-      avatar_url: avatar,
+        avatar_url: avatar,
 
-      discord: discord
+        discord: discord
 
-    });
+      });
 
 
   if (error) {
 
-    console.error(
-      "Error agregando Staff:",
-      error
-    );
-
     alert(
-      "No se pudo agregar el Staff:\n\n" +
+      "No se pudo agregar:\n\n" +
       error.message
     );
 
     return;
+
   }
 
 
-  document.getElementById("staffName").value = "";
-  document.getElementById("staffAvatar").value = "";
-  document.getElementById("staffDiscord").value = "";
+  document
+    .getElementById("staffName")
+    .value = "";
+
+
+  document
+    .getElementById("staffAvatar")
+    .value = "";
+
+
+  document
+    .getElementById("staffDiscord")
+    .value = "";
 
 
   await loadStaff();
@@ -1394,20 +1968,24 @@ async function editStaff(id) {
 
   if (!hasPermission("manage_staff")) {
 
-    alert("No tienes permiso.");
+    alert(
+      "No tienes permiso."
+    );
 
     return;
+
   }
 
 
   const {
     data,
     error
-  } = await supabaseClient
-    .from("staff")
-    .select("*")
-    .eq("id", id)
-    .single();
+  } =
+    await supabaseClient
+      .from("staff")
+      .select("*")
+      .eq("id", id)
+      .single();
 
 
   if (error) {
@@ -1417,26 +1995,36 @@ async function editStaff(id) {
     );
 
     return;
+
   }
 
 
-  editingStaffId = id;
+  editingStaffId =
+    id;
 
 
-  document.getElementById("editName").value =
-    data.name || "";
+  document
+    .getElementById("editName")
+    .value =
+      data.name || "";
 
 
-  document.getElementById("editAvatar").value =
-    data.avatar_url || "";
+  document
+    .getElementById("editAvatar")
+    .value =
+      data.avatar_url || "";
 
 
-  document.getElementById("editDiscord").value =
-    data.discord || "";
+  document
+    .getElementById("editDiscord")
+    .value =
+      data.discord || "";
 
 
-  document.getElementById("editRole").value =
-    data.rol || "Soporte";
+  document
+    .getElementById("editRole")
+    .value =
+      data.rol || "Soporte";
 
 
   document
@@ -1449,7 +2037,9 @@ async function editStaff(id) {
 
 function closeEdit() {
 
-  editingStaffId = null;
+  editingStaffId =
+    null;
+
 
   document
     .getElementById("editModal")
@@ -1471,6 +2061,7 @@ async function saveEdit() {
   ) {
 
     return;
+
   }
 
 
@@ -1504,10 +2095,11 @@ async function saveEdit() {
 
   const {
     error
-  } = await supabaseClient
-    .from("staff")
-    .update(payload)
-    .eq("id", editingStaffId);
+  } =
+    await supabaseClient
+      .from("staff")
+      .update(payload)
+      .eq("id", editingStaffId);
 
 
   if (error) {
@@ -1518,6 +2110,7 @@ async function saveEdit() {
     );
 
     return;
+
   }
 
 
@@ -1538,9 +2131,12 @@ async function deleteStaff(id) {
 
   if (!hasPermission("manage_staff")) {
 
-    alert("No tienes permiso.");
+    alert(
+      "No tienes permiso."
+    );
 
     return;
+
   }
 
 
@@ -1551,15 +2147,17 @@ async function deleteStaff(id) {
   ) {
 
     return;
+
   }
 
 
   const {
     error
-  } = await supabaseClient
-    .from("staff")
-    .delete()
-    .eq("id", id);
+  } =
+    await supabaseClient
+      .from("staff")
+      .delete()
+      .eq("id", id);
 
 
   if (error) {
@@ -1570,6 +2168,7 @@ async function deleteStaff(id) {
     );
 
     return;
+
   }
 
 
@@ -1581,21 +2180,25 @@ async function deleteStaff(id) {
 
 
 /* =========================================
-   CERRAR SESIÓN
+   LOGOUT
 ========================================= */
 
 async function logout() {
 
   await supabaseClient.auth.signOut();
 
-  currentUser = null;
+  currentUser =
+    null;
 
-  currentProfile = null;
+  currentProfile =
+    null;
+
 
   document
-    .getElementById("adminButton")
+    .getElementById("userCard")
     .classList
     .add("hidden");
+
 
   showPage("inicio");
 
@@ -1612,14 +2215,19 @@ async function initialize() {
     data: {
       session
     }
-  } = await supabaseClient.auth.getSession();
+  } =
+    await supabaseClient.auth.getSession();
 
 
   if (session) {
 
-    currentUser = session.user;
+    currentUser =
+      session.user;
+
 
     await loadProfile();
+
+    updateUserCard();
 
   }
 
@@ -1642,9 +2250,14 @@ async function initialize() {
 
       if (session) {
 
-        currentUser = session.user;
+        currentUser =
+          session.user;
+
 
         await loadProfile();
+
+
+        updateUserCard();
 
 
         if (currentProfile) {
@@ -1658,12 +2271,21 @@ async function initialize() {
 
       } else {
 
-        currentUser = null;
+        currentUser =
+          null;
 
-        currentProfile = null;
+        currentProfile =
+          null;
+
 
         document
           .getElementById("adminButton")
+          .classList
+          .add("hidden");
+
+
+        document
+          .getElementById("userCard")
           .classList
           .add("hidden");
 
@@ -1676,7 +2298,7 @@ async function initialize() {
 
 
 /* =========================================
-   ARRANCAR APP
+   ARRANCAR
 ========================================= */
 
 initialize();
