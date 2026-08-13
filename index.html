@@ -9,10 +9,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: #09090b;
@@ -35,6 +38,7 @@
         opacity: 0;
         transform: translateY(5px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -46,7 +50,7 @@
     }
 
     .glass {
-      background: rgba(18,18,20,.92);
+      background: rgba(18, 18, 20, .92);
       backdrop-filter: blur(12px);
     }
 
@@ -78,437 +82,55 @@
 
 <main class="max-w-xl mx-auto min-h-screen">
 
-  <!-- ================= INICIO ================= -->
+<!-- ================= INICIO ================= -->
 
-  <section id="inicio" class="page active px-4 pt-6">
+<section id="inicio" class="page active px-4 pt-6">
 
-    <div class="flex justify-between items-center mb-6">
-      <div>
-        <p class="text-gray-500 text-sm">Bienvenido a</p>
-        <h1 class="text-3xl font-black">
-          PILINGO <span class="text-red-500">RP</span>
-        </h1>
-      </div>
+  <div class="flex justify-between items-center mb-6">
 
-      <div class="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center">
-        <i class="fa-solid fa-gamepad text-red-500 text-xl"></i>
-      </div>
+    <div>
+      <p class="text-gray-500 text-sm">Bienvenido a</p>
+
+      <h1 class="text-3xl font-black">
+        PILINGO <span class="text-red-500">RP</span>
+      </h1>
     </div>
 
-    <!-- USUARIO CONECTADO -->
-
-    <div id="userBox"
-         class="hidden bg-zinc-900 border border-zinc-800 rounded-2xl p-4 mb-5">
-
-      <div class="flex items-center gap-3">
-
-        <img id="userAvatar"
-             src=""
-             class="w-12 h-12 rounded-xl object-cover"
-             alt="Avatar">
-
-        <div class="flex-1">
-          <p class="text-gray-500 text-xs">
-            CONECTADO CON DISCORD
-          </p>
-
-          <p id="userName" class="font-bold">
-            Usuario
-          </p>
-        </div>
-
-        <button onclick="logout()"
-                class="bg-zinc-800 hover:bg-zinc-700 px-3 py-2 rounded-xl">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
-
-      </div>
+    <div class="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center">
+      <i class="fa-solid fa-gamepad text-red-500 text-xl"></i>
     </div>
 
-    <!-- LOGIN DISCORD -->
+  </div>
 
-    <div id="discordLoginBox"
-         class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5">
+  <!-- USUARIO DISCORD -->
 
-      <div class="flex items-center gap-4">
+  <div id="userCard"
+       class="hidden bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5">
 
-        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center">
-          <i class="fa-brands fa-discord text-indigo-400 text-xl"></i>
-        </div>
+    <div class="flex items-center gap-4">
 
-        <div class="flex-1">
-          <h2 class="font-bold">
-            Iniciar sesión
-          </h2>
+      <img id="userAvatar"
+           src=""
+           class="w-14 h-14 rounded-2xl object-cover">
 
-          <p class="text-gray-500 text-sm">
-            Regístrate o inicia sesión con Discord.
-          </p>
-        </div>
+      <div class="flex-1">
 
-      </div>
-
-      <button onclick="loginWithDiscord()"
-              class="w-full mt-4 bg-indigo-500 hover:bg-indigo-600 py-3 rounded-xl font-bold">
-
-        <i class="fa-brands fa-discord mr-2"></i>
-        CONTINUAR CON DISCORD
-
-      </button>
-
-    </div>
-
-    <!-- SERVIDOR -->
-
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5">
-
-      <div class="flex justify-between items-center">
-
-        <div>
-          <p class="text-gray-500 text-sm">
-            Estado del servidor
-          </p>
-
-          <div class="flex items-center gap-2 mt-1">
-            <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
-            <span class="text-green-400 font-bold">
-              ONLINE
-            </span>
-          </div>
-        </div>
-
-        <div class="text-right">
-          <p class="text-gray-500 text-sm">
-            Jugadores
-          </p>
-
-          <p class="font-bold text-xl">
-            24/64
-          </p>
-        </div>
-
-      </div>
-
-      <div class="mt-5 bg-black/40 rounded-2xl p-4">
         <p class="text-gray-500 text-xs">
-          IP DEL SERVIDOR
+          CONECTADO CON DISCORD
         </p>
 
-        <p class="font-bold mt-1">
-          PRÓXIMAMENTE
+        <h2 id="userName"
+            class="font-bold text-lg">
+        </h2>
+
+        <p id="userRole"
+           class="text-red-400 text-sm">
         </p>
-      </div>
-
-    </div>
-
-    <!-- NOTICIA -->
-
-    <div class="flex justify-between items-center mb-3">
-      <h2 class="text-xl font-bold">
-        Últimas noticias
-      </h2>
-
-      <button onclick="showPage('noticias')"
-              class="text-red-400 text-sm">
-        Ver todas
-      </button>
-    </div>
-
-    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-
-      <div class="flex gap-4">
-
-        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
-          <i class="fa-solid fa-bullhorn text-red-500"></i>
-        </div>
-
-        <div>
-          <h3 class="font-bold">
-            Bienvenidos a PILINGO RP
-          </h3>
-
-          <p class="text-gray-400 text-sm mt-1">
-            Estamos preparando todo para la apertura.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= NOTICIAS ================= -->
-
-  <section id="noticias" class="page px-4 pt-6">
-
-    <h1 class="text-3xl font-black">
-      Noticias
-    </h1>
-
-    <p class="text-gray-500 mt-1 mb-6">
-      Novedades de PILINGO RP
-    </p>
-
-    <div id="newsList" class="space-y-4">
-
-      <article class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-
-        <div class="flex gap-4">
-
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
-            <i class="fa-solid fa-bullhorn text-red-500"></i>
-          </div>
-
-          <div>
-            <h2 class="font-bold">
-              Apertura de PILINGO RP
-            </h2>
-
-            <p class="text-gray-400 text-sm mt-2">
-              Muy pronto anunciaremos la apertura oficial del servidor.
-            </p>
-          </div>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= REGLAS ================= -->
-
-  <section id="reglas" class="page px-4 pt-6">
-
-    <h1 class="text-3xl font-black">
-      Reglas
-    </h1>
-
-    <p class="text-gray-500 mt-1 mb-6">
-      Reglas oficiales del servidor
-    </p>
-
-    <div class="space-y-3">
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button onclick="toggleAccordion(this)"
-                class="w-full p-5 flex justify-between items-center">
-
-          <span>
-            <i class="fa-solid fa-book text-red-500 mr-3"></i>
-            Reglas Generales
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm space-y-2">
-
-            <p>1. Respeta a todos los jugadores.</p>
-            <p>2. No utilices cheats.</p>
-            <p>3. No abuses de bugs.</p>
-            <p>4. Respeta al Staff.</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button onclick="toggleAccordion(this)"
-                class="w-full p-5 flex justify-between items-center">
-
-          <span>
-            <i class="fa-solid fa-brain text-purple-500 mr-3"></i>
-            MetaGaming
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm">
-
-            Está prohibido utilizar información obtenida fuera del personaje para obtener ventajas dentro del Roleplay.
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button onclick="toggleAccordion(this)"
-                class="w-full p-5 flex justify-between items-center">
-
-          <span>
-            <i class="fa-solid fa-bolt text-yellow-500 mr-3"></i>
-            PowerGaming
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm">
-
-            No realices acciones imposibles o fuerces situaciones sobre otros jugadores.
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
-
-        <button onclick="toggleAccordion(this)"
-                class="w-full p-5 flex justify-between items-center">
-
-          <span>
-            <i class="fa-solid fa-users text-blue-500 mr-3"></i>
-            Facciones
-          </span>
-
-          <i class="fa-solid fa-chevron-down arrow transition"></i>
-
-        </button>
-
-        <div class="accordion-content">
-
-          <div class="px-5 pb-5 text-gray-400 text-sm">
-
-            Los miembros de las facciones deberán respetar las normas internas y las reglas generales.
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= STAFF ================= -->
-
-  <section id="staff" class="page px-4 pt-6">
-
-    <div class="flex justify-between items-center mb-6">
-
-      <div>
-
-        <h1 class="text-3xl font-black">
-          Staff
-        </h1>
-
-        <p class="text-gray-500">
-          Equipo de PILINGO RP
-        </p>
-
-      </div>
-
-      <button id="adminButton"
-              onclick="openAdmin()"
-              class="hidden bg-red-500 hover:bg-red-600 px-4 py-3 rounded-xl">
-
-        <i class="fa-solid fa-lock"></i>
-
-      </button>
-
-    </div>
-
-    <div id="staffList" class="space-y-4">
-
-      <div class="text-center text-gray-500 py-10">
-        Cargando Staff...
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= DISCORD ================= -->
-
-  <section id="discord" class="page px-4 pt-6">
-
-    <h1 class="text-3xl font-black">
-      Discord
-    </h1>
-
-    <p class="text-gray-500 mt-1 mb-6">
-      Únete a nuestra comunidad
-    </p>
-
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center">
-
-      <div class="w-20 h-20 mx-auto bg-indigo-500/10 rounded-3xl flex items-center justify-center mb-5">
-
-        <i class="fa-brands fa-discord text-indigo-400 text-4xl"></i>
-
-      </div>
-
-      <h2 class="text-2xl font-black">
-        PILINGO RP
-      </h2>
-
-      <p class="text-gray-400 text-sm mt-3 mb-6">
-        Únete al Discord oficial para conocer novedades, eventos y recibir soporte.
-      </p>
-
-      <a href="https://discord.gg/ukEZEvkgwX"
-         target="_blank"
-         rel="noopener"
-         class="block bg-indigo-500 hover:bg-indigo-600 py-4 rounded-2xl font-bold">
-
-        <i class="fa-brands fa-discord mr-2"></i>
-        UNIRME AL DISCORD
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= PANEL ADMIN ================= -->
-
-  <section id="admin" class="page px-4 pt-6">
-
-    <div class="flex justify-between items-center mb-6">
-
-      <div>
-
-        <h1 class="text-3xl font-black">
-          Panel
-        </h1>
-
-        <p id="adminRole" class="text-red-400 text-sm"></p>
 
       </div>
 
       <button onclick="logout()"
-              class="bg-zinc-800 px-4 py-3 rounded-xl">
+              class="bg-zinc-800 w-10 h-10 rounded-xl">
 
         <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -516,28 +138,219 @@
 
     </div>
 
+  </div>
 
-    <!-- PERFIL -->
+  <div id="loginCard"
+       class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5">
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+    <div class="text-center">
 
-      <div class="flex items-center gap-4">
+      <div class="w-16 h-16 mx-auto bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-4">
 
-        <img id="adminAvatar"
-             src=""
-             class="w-16 h-16 rounded-2xl object-cover"
-             alt="Avatar">
+        <i class="fa-brands fa-discord text-indigo-400 text-3xl"></i>
+
+      </div>
+
+      <h2 class="text-xl font-black">
+        Inicia sesión
+      </h2>
+
+      <p class="text-gray-500 text-sm mt-2 mb-5">
+        Regístrate o inicia sesión automáticamente con tu cuenta de Discord.
+      </p>
+
+      <button onclick="loginWithDiscord()"
+              class="w-full bg-indigo-500 hover:bg-indigo-600 py-4 rounded-2xl font-bold">
+
+        <i class="fa-brands fa-discord mr-2"></i>
+
+        CONTINUAR CON DISCORD
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- SERVIDOR -->
+
+  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-5">
+
+    <div class="flex justify-between items-center">
+
+      <div>
+
+        <p class="text-gray-500 text-sm">
+          Estado del servidor
+        </p>
+
+        <div class="flex items-center gap-2 mt-1">
+
+          <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+
+          <span class="text-green-400 font-bold">
+            ONLINE
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="text-right">
+
+        <p class="text-gray-500 text-sm">
+          Jugadores
+        </p>
+
+        <p class="font-bold text-xl">
+          24/64
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="mt-5 bg-black/40 rounded-2xl p-4">
+
+      <p class="text-gray-500 text-xs">
+        IP DEL SERVIDOR
+      </p>
+
+      <p class="font-bold mt-1">
+        PRÓXIMAMENTE
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- NOTICIAS -->
+
+  <div class="flex justify-between items-center mb-3">
+
+    <h2 class="text-xl font-bold">
+      Últimas noticias
+    </h2>
+
+    <button onclick="showPage('noticias')"
+            class="text-red-400 text-sm">
+
+      Ver todas
+
+    </button>
+
+  </div>
+
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+
+    <div class="flex gap-4">
+
+      <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+
+        <i class="fa-solid fa-bullhorn text-red-500"></i>
+
+      </div>
+
+      <div>
+
+        <h3 class="font-bold">
+          Bienvenidos a PILINGO RP
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-1">
+          Estamos preparando todo para la apertura.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= NOTICIAS ================= -->
+
+<section id="noticias" class="page px-4 pt-6">
+
+  <h1 class="text-3xl font-black">
+    Noticias
+  </h1>
+
+  <p class="text-gray-500 mt-1 mb-6">
+    Novedades de PILINGO RP
+  </p>
+
+  <div class="space-y-4">
+
+    <article class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+
+      <div class="flex gap-4">
+
+        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+
+          <i class="fa-solid fa-bullhorn text-red-500"></i>
+
+        </div>
 
         <div>
 
-          <h2 id="adminName"
-              class="font-bold text-lg">
-            Usuario
+          <h2 class="font-bold">
+            Apertura de PILINGO RP
           </h2>
 
-          <p id="adminDiscord"
-             class="text-gray-500 text-sm">
+          <p class="text-gray-400 text-sm mt-2">
+            Muy pronto anunciaremos la apertura oficial del servidor.
           </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= REGLAS ================= -->
+
+<section id="reglas" class="page px-4 pt-6">
+
+  <h1 class="text-3xl font-black">
+    Reglas
+  </h1>
+
+  <p class="text-gray-500 mt-1 mb-6">
+    Reglas oficiales del servidor
+  </p>
+
+  <div class="space-y-3">
+
+    <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
+
+      <button onclick="toggleAccordion(this)"
+              class="w-full p-5 flex justify-between items-center">
+
+        <span>
+          <i class="fa-solid fa-book text-red-500 mr-3"></i>
+          Reglas Generales
+        </span>
+
+        <i class="fa-solid fa-chevron-down arrow transition"></i>
+
+      </button>
+
+      <div class="accordion-content">
+
+        <div class="px-5 pb-5 text-gray-400 text-sm space-y-2">
+
+          <p>1. Respeta a todos los jugadores.</p>
+          <p>2. No utilices cheats.</p>
+          <p>3. No abuses de bugs.</p>
+          <p>4. Respeta al Staff.</p>
 
         </div>
 
@@ -546,75 +359,270 @@
     </div>
 
 
-    <!-- PERMISOS -->
+    <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+      <button onclick="toggleAccordion(this)"
+              class="w-full p-5 flex justify-between items-center">
 
-      <h2 class="font-bold mb-4">
-        Tus permisos
-      </h2>
+        <span>
+          <i class="fa-solid fa-brain text-purple-500 mr-3"></i>
+          MetaGaming
+        </span>
 
-      <div id="permissionsList"
-           class="space-y-2">
+        <i class="fa-solid fa-chevron-down arrow transition"></i>
+
+      </button>
+
+      <div class="accordion-content">
+
+        <div class="px-5 pb-5 text-gray-400 text-sm">
+
+          Está prohibido utilizar información obtenida fuera del personaje para obtener ventajas dentro del Roleplay.
+
+        </div>
+
       </div>
 
     </div>
 
 
-    <!-- AGREGAR STAFF -->
+    <div class="accordion bg-zinc-900 border border-zinc-800 rounded-2xl">
 
-    <div id="addStaffCard"
-         class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+      <button onclick="toggleAccordion(this)"
+              class="w-full p-5 flex justify-between items-center">
 
-      <h2 class="font-bold text-lg mb-4">
-        Agregar Staff
-      </h2>
+        <span>
+          <i class="fa-solid fa-bolt text-yellow-500 mr-3"></i>
+          PowerGaming
+        </span>
 
-      <input id="staffName"
-             type="text"
-             placeholder="Nombre"
-             class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none">
-
-      <input id="staffAvatar"
-             type="url"
-             placeholder="URL del avatar"
-             class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none">
-
-      <input id="staffDiscord"
-             type="text"
-             placeholder="Discord: @usuario"
-             class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none">
-
-      <select id="staffRole"
-              class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4">
-
-        <option>Fundador</option>
-        <option>Administrador</option>
-        <option>Moderador</option>
-        <option>Soporte</option>
-
-      </select>
-
-      <button onclick="addStaff()"
-              class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold">
-
-        <i class="fa-solid fa-plus mr-2"></i>
-        AGREGAR STAFF
+        <i class="fa-solid fa-chevron-down arrow transition"></i>
 
       </button>
 
+      <div class="accordion-content">
+
+        <div class="px-5 pb-5 text-gray-400 text-sm">
+
+          No realices acciones imposibles o fuerces situaciones sobre otros jugadores.
+
+        </div>
+
+      </div>
+
     </div>
 
+  </div>
 
-    <h2 class="font-bold text-lg mb-4">
-      Administrar Staff
+</section>
+
+
+<!-- ================= STAFF ================= -->
+
+<section id="staff" class="page px-4 pt-6">
+
+  <div class="flex justify-between items-center mb-6">
+
+    <div>
+
+      <h1 class="text-3xl font-black">
+        Staff
+      </h1>
+
+      <p class="text-gray-500">
+        Equipo de PILINGO RP
+      </p>
+
+    </div>
+
+    <button id="adminButton"
+            onclick="openAdmin()"
+            class="hidden bg-red-500 px-4 py-3 rounded-xl">
+
+      <i class="fa-solid fa-lock"></i>
+
+    </button>
+
+  </div>
+
+  <div id="staffList"
+       class="space-y-4">
+
+    <div class="text-center text-gray-500 py-10">
+      Cargando Staff...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DISCORD ================= -->
+
+<section id="discord" class="page px-4 pt-6">
+
+  <h1 class="text-3xl font-black">
+    Discord
+  </h1>
+
+  <p class="text-gray-500 mt-1 mb-6">
+    Únete a nuestra comunidad
+  </p>
+
+  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center">
+
+    <div class="w-20 h-20 mx-auto bg-indigo-500/10 rounded-3xl flex items-center justify-center mb-5">
+
+      <i class="fa-brands fa-discord text-indigo-400 text-4xl"></i>
+
+    </div>
+
+    <h2 class="text-2xl font-black">
+      PILINGO RP
     </h2>
 
-    <div id="adminStaffList"
-         class="space-y-3">
+    <p class="text-gray-400 text-sm mt-3 mb-6">
+      Únete al Discord oficial para conocer novedades, eventos y recibir soporte.
+    </p>
+
+    <a href="https://discord.gg/ukEZEvkgwX"
+       target="_blank"
+       rel="noopener"
+       class="block bg-indigo-500 hover:bg-indigo-600 py-4 rounded-2xl font-bold">
+
+      <i class="fa-brands fa-discord mr-2"></i>
+
+      UNIRME AL DISCORD
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PANEL ADMIN ================= -->
+
+<section id="admin" class="page px-4 pt-6">
+
+  <div class="flex justify-between items-center mb-6">
+
+    <div>
+
+      <h1 class="text-3xl font-black">
+        Panel
+      </h1>
+
+      <p id="adminRole"
+         class="text-red-400 text-sm">
+      </p>
+
     </div>
 
-  </section>
+    <button onclick="logout()"
+            class="bg-zinc-800 px-4 py-3 rounded-xl">
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+
+    </button>
+
+  </div>
+
+
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+
+    <h2 class="font-bold mb-4">
+      Tu cuenta
+    </h2>
+
+    <div class="flex items-center gap-4">
+
+      <img id="adminAvatar"
+           class="w-14 h-14 rounded-2xl object-cover">
+
+      <div>
+
+        <p id="adminName"
+           class="font-bold">
+        </p>
+
+        <p id="adminDiscord"
+           class="text-gray-500 text-sm">
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+
+    <h2 class="font-bold mb-4">
+      Tus permisos
+    </h2>
+
+    <div id="permissionsList"
+         class="space-y-2">
+    </div>
+
+  </div>
+
+
+  <div id="addStaffCard"
+       class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-5">
+
+    <h2 class="font-bold text-lg mb-4">
+      Agregar Staff
+    </h2>
+
+    <input id="staffName"
+           type="text"
+           placeholder="Nombre"
+           class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none">
+
+    <input id="staffAvatar"
+           type="url"
+           placeholder="URL del avatar"
+           class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none">
+
+    <input id="staffDiscord"
+           type="text"
+           placeholder="Discord"
+           class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-3 outline-none">
+
+    <select id="staffRole"
+            class="w-full bg-black border border-zinc-700 rounded-xl p-3 mb-4">
+
+      <option>Fundador</option>
+      <option>Administrador</option>
+      <option>Moderador</option>
+      <option>Soporte</option>
+
+    </select>
+
+    <button onclick="addStaff()"
+            class="w-full bg-red-500 hover:bg-red-600 py-3 rounded-xl font-bold">
+
+      <i class="fa-solid fa-plus mr-2"></i>
+
+      AGREGAR STAFF
+
+    </button>
+
+  </div>
+
+
+  <h2 class="font-bold text-lg mb-4">
+    Administrar Staff
+  </h2>
+
+  <div id="adminStaffList"
+       class="space-y-3">
+  </div>
+
+</section>
 
 </main>
 
@@ -632,7 +640,10 @@
               class="nav-btn nav-active flex flex-col items-center justify-center gap-1">
 
         <i class="fa-solid fa-house"></i>
-        <span class="text-xs">Inicio</span>
+
+        <span class="text-xs">
+          Inicio
+        </span>
 
       </button>
 
@@ -642,7 +653,10 @@
               class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1">
 
         <i class="fa-solid fa-newspaper"></i>
-        <span class="text-xs">Noticias</span>
+
+        <span class="text-xs">
+          Noticias
+        </span>
 
       </button>
 
@@ -652,7 +666,10 @@
               class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1">
 
         <i class="fa-solid fa-book"></i>
-        <span class="text-xs">Reglas</span>
+
+        <span class="text-xs">
+          Reglas
+        </span>
 
       </button>
 
@@ -662,7 +679,10 @@
               class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1">
 
         <i class="fa-solid fa-users"></i>
-        <span class="text-xs">Staff</span>
+
+        <span class="text-xs">
+          Staff
+        </span>
 
       </button>
 
@@ -672,7 +692,10 @@
               class="nav-btn text-gray-500 flex flex-col items-center justify-center gap-1">
 
         <i class="fa-brands fa-discord"></i>
-        <span class="text-xs">Discord</span>
+
+        <span class="text-xs">
+          Discord
+        </span>
 
       </button>
 
@@ -683,56 +706,7 @@
 </nav>
 
 
-<!-- ================= LOGIN MODAL ================= -->
-
-<div id="loginModal"
-     class="modal fixed inset-0 z-[100] bg-black/80 items-center justify-center px-5">
-
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 w-full max-w-md">
-
-    <div class="text-center mb-6">
-
-      <div class="w-16 h-16 mx-auto bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-4">
-
-        <i class="fa-brands fa-discord text-indigo-400 text-2xl"></i>
-
-      </div>
-
-      <h2 class="text-2xl font-black">
-        Iniciar sesión
-      </h2>
-
-      <p class="text-gray-500 text-sm mt-1">
-        Usa tu cuenta de Discord
-      </p>
-
-    </div>
-
-    <button onclick="loginWithDiscord()"
-            class="w-full bg-indigo-500 hover:bg-indigo-600 py-3 rounded-xl font-bold">
-
-      <i class="fa-brands fa-discord mr-2"></i>
-      CONTINUAR CON DISCORD
-
-    </button>
-
-    <button onclick="closeLogin()"
-            class="w-full mt-3 text-gray-500 py-2">
-
-      Cancelar
-
-    </button>
-
-    <p id="loginError"
-       class="text-red-400 text-sm text-center mt-3 hidden">
-    </p>
-
-  </div>
-
-</div>
-
-
-<!-- ================= EDITAR STAFF ================= -->
+<!-- ================= MODAL EDITAR ================= -->
 
 <div id="editModal"
      class="modal fixed inset-0 z-[100] bg-black/80 items-center justify-center px-5">
@@ -789,35 +763,35 @@
 
 <script>
 
-/* =====================================================
+/* =========================================================
    SUPABASE
-===================================================== */
+========================================================= */
 
 const SUPABASE_URL =
-  "https://tsoifqxyarbewjkzrmzw.supabase.co";
+"https://tsoifqxyarbewjkzrmzw.supabase.co";
 
 const SUPABASE_ANON_KEY =
-  "sb_publishable_ZnGeBJb-EMxv3T5khUFyBw_4OZSehz-";
+"sb_publishable_ZnGeBJb-EMxv3T5khUFyBw_4OZSehz-";
 
 const supabaseClient =
-  supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
-  );
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
 
-/* =====================================================
+/* =========================================================
    VARIABLES
-===================================================== */
+========================================================= */
 
 let currentUser = null;
 let currentProfile = null;
 let editingStaffId = null;
 
 
-/* =====================================================
-   PERMISOS
-===================================================== */
+/* =========================================================
+   ROLES
+========================================================= */
 
 const permissions = {
 
@@ -841,43 +815,47 @@ const permissions = {
 
   Soporte: [
     "support"
-  ],
-
-  Usuario: []
+  ]
 
 };
 
 
-/* =====================================================
+const staffRoles = [
+  "Fundador",
+  "Administrador",
+  "Moderador",
+  "Soporte"
+];
+
+
+/* =========================================================
    NAVEGACIÓN
-===================================================== */
+========================================================= */
 
 function showPage(id) {
 
   document
     .querySelectorAll(".page")
-    .forEach(page => {
-      page.classList.remove("active");
-    });
+    .forEach(p => p.classList.remove("active"));
 
   const page =
     document.getElementById(id);
 
-  if (page) {
+  if (page)
     page.classList.add("active");
-  }
+
 
   document
     .querySelectorAll(".nav-btn")
-    .forEach(button => {
+    .forEach(btn => {
 
-      button.classList.remove("nav-active");
-      button.classList.add("text-gray-500");
+      btn.classList.remove("nav-active");
+      btn.classList.add("text-gray-500");
 
-      if (button.dataset.page === id) {
+      if (btn.dataset.page === id) {
 
-        button.classList.add("nav-active");
-        button.classList.remove("text-gray-500");
+        btn.classList.add("nav-active");
+        btn.classList.remove("text-gray-500");
 
       }
 
@@ -887,9 +865,9 @@ function showPage(id) {
 }
 
 
-/* =====================================================
+/* =========================================================
    ACORDEÓN
-===================================================== */
+========================================================= */
 
 function toggleAccordion(button) {
 
@@ -901,114 +879,49 @@ function toggleAccordion(button) {
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGIN CON DISCORD
-===================================================== */
+========================================================= */
 
 async function loginWithDiscord() {
 
-  const { error } =
+  const redirectUrl =
+    window.location.origin;
+
+
+  const { data, error } =
     await supabaseClient.auth.signInWithOAuth({
 
       provider: "discord",
 
       options: {
 
-        redirectTo:
-          window.location.origin + "/",
+        redirectTo: redirectUrl,
 
-        scopes:
-          "identify email"
+        scopes: "identify email"
 
       }
 
     });
 
+
   if (error) {
 
     console.error(error);
 
-    document
-      .getElementById("loginError")
-      .textContent =
-        "Error con Discord: " +
-        error.message;
-
-    document
-      .getElementById("loginError")
-      .classList
-      .remove("hidden");
-
-  }
-
-}
-
-
-/* =====================================================
-   ADMIN
-===================================================== */
-
-function openAdmin() {
-
-  if (!currentUser || !currentProfile) {
-
-    document
-      .getElementById("loginModal")
-      .classList
-      .add("active");
-
-    return;
-
-  }
-
-  if (
-    !currentProfile.role ||
-    currentProfile.role === "Usuario"
-  ) {
-
     alert(
-      "Tu cuenta no tiene permisos de Staff."
+      "No se pudo iniciar sesión con Discord: " +
+      error.message
     );
 
-    return;
-
   }
 
-  updateAdminPanel();
-  showPage("admin");
-
 }
 
 
-function closeLogin() {
-
-  document
-    .getElementById("loginModal")
-    .classList
-    .remove("active");
-
-}
-
-
-/* =====================================================
-   ESCAPAR HTML
-===================================================== */
-
-function escapeHTML(value) {
-
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-
-}
-
-
-/* =====================================================
+/* =========================================================
    OBTENER DATOS DE DISCORD
-===================================================== */
+========================================================= */
 
 function getDiscordData(user) {
 
@@ -1017,280 +930,384 @@ function getDiscordData(user) {
 
   const identity =
     user?.identities?.find(
-      item => item.provider === "discord"
+      i => i.provider === "discord"
     );
 
   const identityData =
     identity?.identity_data || {};
 
-  const name =
-    metadata.global_name ||
-    metadata.full_name ||
-    metadata.name ||
-    metadata.preferred_username ||
-    metadata.user_name ||
-    identityData.global_name ||
-    identityData.username ||
-    "Usuario";
-
-  const avatar =
-    metadata.avatar_url ||
-    identityData.avatar_url ||
-    "https://i.pravatar.cc/150";
 
   const discordId =
     identityData.id ||
+    identityData.sub ||
+    identityData.provider_id ||
     metadata.provider_id ||
     metadata.sub ||
-    "";
+    null;
+
+
+  const name =
+    metadata.full_name ||
+    metadata.name ||
+    metadata.user_name ||
+    metadata.preferred_username ||
+    metadata.username ||
+    "Usuario Discord";
+
+
+  const avatar =
+    metadata.avatar_url ||
+    metadata.picture ||
+    identityData.avatar_url ||
+    "https://i.pravatar.cc/150";
+
 
   return {
-    name,
-    avatar,
-    discordId
+
+    discordId: discordId
+      ? String(discordId)
+      : "",
+
+    name: name,
+
+    avatar: avatar
+
   };
 
 }
 
 
-/* =====================================================
-   CARGAR / CREAR PERFIL
-===================================================== */
+/* =========================================================
+   CARGAR PERFIL
+========================================================= */
 
 async function loadProfile() {
 
-  if (!currentUser) {
-    return;
-  }
+  if (!currentUser)
+    return null;
+
 
   const discord =
     getDiscordData(currentUser);
 
-  let {
-    data: profile,
-    error
-  } =
+
+  /*
+    Primero buscamos si el perfil ya existe.
+    Esto es importante para NO cambiar
+    el role de Fundador.
+  */
+
+  const { data: existing, error: findError } =
     await supabaseClient
       .from("profiles")
       .select("*")
       .eq("id", currentUser.id)
       .maybeSingle();
 
-  if (error) {
+
+  if (findError) {
 
     console.error(
-      "Error buscando profile:",
-      error
+      "Error buscando perfil:",
+      findError
     );
 
-  }
-
-
-  /*
-     SI NO EXISTE EL PERFIL
-  */
-
-  if (!profile) {
-
-    const newProfile = {
-
-      id: currentUser.id,
-
-      name:
-        discord.name,
-
-      avatar_url:
-        discord.avatar,
-
-      discord_id:
-        discord.discordId,
-
-      role:
-        "Usuario"
-
-    };
-
-    const result =
-      await supabaseClient
-        .from("profiles")
-        .insert(newProfile)
-        .select()
-        .single();
-
-    if (result.error) {
-
-      console.error(
-        "Error creando profile:",
-        result.error
-      );
-
-      /*
-         El trigger de Supabase debería
-         haber creado el perfil.
-         Lo volvemos a buscar.
-      */
-
-      const retry =
-        await supabaseClient
-          .from("profiles")
-          .select("*")
-          .eq("id", currentUser.id)
-          .maybeSingle();
-
-      if (retry.data) {
-
-        profile =
-          retry.data;
-
-      } else {
-
-        /*
-           Perfil temporal para que
-           el usuario pueda continuar.
-        */
-
-        profile = {
-
-          id:
-            currentUser.id,
-
-          name:
-            discord.name,
-
-          avatar_url:
-            discord.avatar,
-
-          discord_id:
-            discord.discordId,
-
-          role:
-            "Usuario"
-
-        };
-
-      }
-
-    } else {
-
-      profile =
-        result.data;
-
-    }
+    return null;
 
   }
 
 
-  /*
-     SI YA EXISTE:
-     ACTUALIZAR NOMBRE,
-     AVATAR E ID DE DISCORD.
+  let profile;
 
-     NO TOCAMOS EL ROLE.
-  */
 
-  if (profile) {
+  if (existing) {
+
+    /*
+      El perfil ya existe.
+      Conservamos su role.
+    */
 
     const updateData = {
 
+      discord_id:
+        discord.discordId || existing.discord_id,
+
       name:
         discord.name,
 
       avatar_url:
-        discord.avatar,
-
-      discord_id:
-        discord.discordId
+        discord.avatar
 
     };
 
-    const updateResult =
+
+    const { data, error } =
       await supabaseClient
         .from("profiles")
         .update(updateData)
         .eq("id", currentUser.id)
         .select()
-        .maybeSingle();
+        .single();
 
-    if (!updateResult.error &&
-        updateResult.data) {
 
-      profile =
-        updateResult.data;
+    if (error) {
+
+      console.error(
+        "Error actualizando perfil:",
+        error
+      );
+
+      profile = existing;
+
+    } else {
+
+      profile = data;
 
     }
+
+  } else {
+
+    /*
+      Usuario nuevo.
+      Se registra automáticamente
+      como Usuario.
+    */
+
+    const insertData = {
+
+      id: currentUser.id,
+
+      role: "Usuario",
+
+      discord_id:
+        discord.discordId,
+
+      name:
+        discord.name,
+
+      avatar_url:
+        discord.avatar
+
+    };
+
+
+    const { data, error } =
+      await supabaseClient
+        .from("profiles")
+        .insert(insertData)
+        .select()
+        .single();
+
+
+    if (error) {
+
+      console.error(
+        "Error creando perfil:",
+        error
+      );
+
+      return null;
+
+    }
+
+
+    profile = data;
 
   }
 
 
-  currentProfile =
-    profile;
+  currentProfile = profile;
 
-  updateUserInterface();
+
+  /*
+    Si es Staff, sincronizamos
+    automáticamente con la tabla staff.
+  */
+
+  if (
+    currentProfile &&
+    staffRoles.includes(currentProfile.role)
+  ) {
+
+    await syncStaff(
+      discord,
+      currentProfile.role
+    );
+
+  }
+
+
+  return currentProfile;
 
 }
 
 
-/* =====================================================
-   INTERFAZ
-===================================================== */
+/* =========================================================
+   SINCRONIZAR STAFF
+========================================================= */
 
-function updateUserInterface() {
+async function syncStaff(discord, role) {
 
-  if (!currentProfile) {
+  if (!discord.discordId)
     return;
-  }
-
-  const avatar =
-    currentProfile.avatar_url ||
-    "https://i.pravatar.cc/150";
-
-  const name =
-    currentProfile.name ||
-    "Usuario";
 
 
-  document
-    .getElementById("userBox")
-    .classList
-    .remove("hidden");
+  /*
+    Buscamos primero por Discord.
+  */
 
-  document
-    .getElementById("discordLoginBox")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("userAvatar")
-    .src =
-      avatar;
-
-  document
-    .getElementById("userName")
-    .textContent =
-      name;
+  const { data: existing, error } =
+    await supabaseClient
+      .from("staff")
+      .select("*")
+      .eq("discord", discord.discordId)
+      .maybeSingle();
 
 
-  const adminButton =
-    document.getElementById(
-      "adminButton"
+  if (error) {
+
+    console.error(
+      "Error buscando Staff:",
+      error
     );
 
+    return;
 
-  if (
-    currentProfile.role &&
-    currentProfile.role !== "Usuario"
-  ) {
+  }
 
-    adminButton
-      .classList
-      .remove("hidden");
+
+  if (existing) {
+
+    /*
+      Actualiza automáticamente
+      nombre, avatar y rol.
+    */
+
+    const { error: updateError } =
+      await supabaseClient
+        .from("staff")
+        .update({
+
+          name: discord.name,
+
+          avatar_url: discord.avatar,
+
+          discord: discord.discordId,
+
+          role: role
+
+        })
+        .eq("id", existing.id);
+
+
+    if (updateError)
+      console.error(
+        "Error actualizando Staff:",
+        updateError
+      );
+
 
   } else {
 
-    adminButton
-      .classList
-      .add("hidden");
+    /*
+      Si no existe, lo crea.
+    */
+
+    const { error: insertError } =
+      await supabaseClient
+        .from("staff")
+        .insert({
+
+          name: discord.name,
+
+          avatar_url: discord.avatar,
+
+          discord: discord.discordId,
+
+          role: role
+
+        });
+
+
+    if (insertError)
+      console.error(
+        "Error creando Staff:",
+        insertError
+      );
+
+  }
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR INTERFAZ DEL USUARIO
+========================================================= */
+
+function updateUserInterface() {
+
+  const userCard =
+    document.getElementById("userCard");
+
+  const loginCard =
+    document.getElementById("loginCard");
+
+
+  if (!currentUser || !currentProfile) {
+
+    userCard.classList.add("hidden");
+    loginCard.classList.remove("hidden");
+
+    return;
+
+  }
+
+
+  const discord =
+    getDiscordData(currentUser);
+
+
+  userCard.classList.remove("hidden");
+  loginCard.classList.add("hidden");
+
+
+  document.getElementById(
+    "userName"
+  ).textContent =
+    discord.name;
+
+
+  document.getElementById(
+    "userRole"
+  ).textContent =
+    currentProfile.role;
+
+
+  document.getElementById(
+    "userAvatar"
+  ).src =
+    discord.avatar;
+
+
+  /*
+    Panel Staff solamente para Staff.
+  */
+
+  const adminButton =
+    document.getElementById("adminButton");
+
+
+  if (
+    staffRoles.includes(
+      currentProfile.role
+    )
+  ) {
+
+    adminButton.classList.remove("hidden");
+
+  } else {
+
+    adminButton.classList.add("hidden");
 
   }
 
@@ -1300,17 +1317,15 @@ function updateUserInterface() {
 }
 
 
-/* =====================================================
+/* =========================================================
    PERMISOS
-===================================================== */
+========================================================= */
 
 function hasPermission(permission) {
 
   return !!(
     currentProfile &&
-    permissions[
-      currentProfile.role
-    ]?.includes(permission)
+    permissions[currentProfile.role]?.includes(permission)
   );
 
 }
@@ -1346,44 +1361,43 @@ function formatPermission(permission) {
 }
 
 
-/* =====================================================
+/* =========================================================
    PANEL ADMIN
-===================================================== */
+========================================================= */
 
 function updateAdminPanel() {
 
-  if (!currentProfile) {
+  if (!currentProfile)
     return;
-  }
-
-  document
-    .getElementById("adminRole")
-    .textContent =
-      currentProfile.role || "Usuario";
 
 
-  document
-    .getElementById("adminName")
-    .textContent =
-      currentProfile.name ||
-      "Usuario";
+  document.getElementById(
+    "adminRole"
+  ).textContent =
+    currentProfile.role;
 
 
-  document
-    .getElementById("adminAvatar")
-    .src =
-      currentProfile.avatar_url ||
-      "https://i.pravatar.cc/150";
+  const discord =
+    getDiscordData(currentUser);
 
 
-  document
-    .getElementById("adminDiscord")
-    .textContent =
-      "Discord ID: " +
-      (
-        currentProfile.discord_id ||
-        "No disponible"
-      );
+  document.getElementById(
+    "adminName"
+  ).textContent =
+    discord.name;
+
+
+  document.getElementById(
+    "adminDiscord"
+  ).textContent =
+    "Discord ID: " +
+    (discord.discordId || "No disponible");
+
+
+  document.getElementById(
+    "adminAvatar"
+  ).src =
+    discord.avatar;
 
 
   const box =
@@ -1391,43 +1405,31 @@ function updateAdminPanel() {
       "permissionsList"
     );
 
+
   box.innerHTML = "";
 
 
-  const userPermissions =
-    permissions[
-      currentProfile.role
-    ] || [];
+  (
+    permissions[currentProfile.role] || []
+  ).forEach(permission => {
 
+    box.innerHTML += `
 
-  if (!userPermissions.length) {
+      <div class="flex items-center gap-3 text-sm">
 
-    box.innerHTML =
-      '<p class="text-gray-500 text-sm">No tienes permisos administrativos.</p>';
+        <i class="fa-solid fa-check text-green-500"></i>
 
-  } else {
+        <span class="text-gray-400">
 
-    userPermissions.forEach(permission => {
+          ${formatPermission(permission)}
 
-      box.innerHTML += `
+        </span>
 
-        <div class="flex items-center gap-3 text-sm">
+      </div>
 
-          <i class="fa-solid fa-check text-green-500"></i>
+    `;
 
-          <span class="text-gray-400">
-            ${escapeHTML(
-              formatPermission(permission)
-            )}
-          </span>
-
-        </div>
-
-      `;
-
-    });
-
-  }
+  });
 
 
   document
@@ -1444,9 +1446,30 @@ function updateAdminPanel() {
 }
 
 
-/* =====================================================
+/* =========================================================
+   ESCAPAR HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+
+    .replaceAll("&", "&amp;")
+
+    .replaceAll("<", "&lt;")
+
+    .replaceAll(">", "&gt;")
+
+    .replaceAll('"', "&quot;")
+
+    .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================================================
    COLORES STAFF
-===================================================== */
+========================================================= */
 
 function roleColor(role) {
 
@@ -1480,9 +1503,9 @@ function roleIcon(role) {
 }
 
 
-/* =====================================================
-   STAFF PÚBLICO
-===================================================== */
+/* =========================================================
+   CARGAR STAFF
+========================================================= */
 
 async function loadStaff() {
 
@@ -1498,9 +1521,7 @@ async function loadStaff() {
       .select("*")
       .order(
         "created_at",
-        {
-          ascending: true
-        }
+        { ascending: true }
       );
 
 
@@ -1511,7 +1532,9 @@ async function loadStaff() {
     box.innerHTML = `
 
       <div class="text-center text-red-400 py-10">
+
         No se pudo cargar el Staff.
+
       </div>
 
     `;
@@ -1526,7 +1549,9 @@ async function loadStaff() {
     box.innerHTML = `
 
       <div class="text-center text-gray-500 py-10">
+
         Todavía no hay miembros del Staff.
+
       </div>
 
     `;
@@ -1537,62 +1562,59 @@ async function loadStaff() {
 
 
   box.innerHTML =
-    data.map(member => {
+    data.map(member => `
 
-      const avatar =
-        member.avatar_url ||
-        "https://i.pravatar.cc/150";
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
 
+        <div class="flex items-center gap-4">
 
-      return `
+          <img
+            src="${escapeHTML(
+              member.avatar_url ||
+              "https://i.pravatar.cc/150"
+            )}"
+            class="w-16 h-16 rounded-2xl object-cover"
+            onerror="this.src='https://i.pravatar.cc/150'"
+          >
 
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+          <div class="flex-1">
 
-          <div class="flex items-center gap-4">
+            <h2 class="font-bold text-lg">
 
-            <img
-              src="${escapeHTML(avatar)}"
-              class="w-16 h-16 rounded-2xl object-cover"
-              alt="Avatar"
-              onerror="this.src='https://i.pravatar.cc/150'"
-            >
+              ${escapeHTML(member.name)}
 
-            <div class="flex-1">
+            </h2>
 
-              <h2 class="font-bold text-lg">
-                ${escapeHTML(member.name)}
-              </h2>
+            <p class="${roleColor(member.role)} font-semibold text-sm">
 
-              <p class="${roleColor(member.role)} font-semibold text-sm">
-                ${escapeHTML(member.role)}
-              </p>
+              ${escapeHTML(member.role)}
 
-              <p class="text-gray-500 text-xs mt-1">
-                Discord:
-                ${escapeHTML(
-                  member.discord ||
-                  "No indicado"
-                )}
-              </p>
+            </p>
 
-            </div>
+            <p class="text-gray-500 text-xs mt-1">
 
-            <i class="${roleIcon(member.role)} text-xl"></i>
+              Discord: ${escapeHTML(
+                member.discord || "No indicado"
+              )}
+
+            </p>
 
           </div>
 
+          <i class="${roleIcon(member.role)} text-xl"></i>
+
         </div>
 
-      `;
+      </div>
 
-    }).join("");
+    `).join("");
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ADMIN STAFF
-===================================================== */
+========================================================= */
 
 async function loadAdminStaff() {
 
@@ -1604,8 +1626,15 @@ async function loadAdminStaff() {
 
   if (!hasPermission("manage_staff")) {
 
-    box.innerHTML =
-      '<p class="text-gray-500 text-sm">No tienes permiso para administrar Staff.</p>';
+    box.innerHTML = `
+
+      <p class="text-gray-500 text-sm">
+
+        No tienes permiso para administrar Staff.
+
+      </p>
+
+    `;
 
     return;
 
@@ -1618,16 +1647,21 @@ async function loadAdminStaff() {
       .select("*")
       .order(
         "created_at",
-        {
-          ascending: true
-        }
+        { ascending: true }
       );
 
 
   if (error) {
 
-    box.innerHTML =
-      '<p class="text-red-400">Error cargando Staff.</p>';
+    box.innerHTML = `
+
+      <p class="text-red-400">
+
+        Error cargando Staff.
+
+      </p>
+
+    `;
 
     return;
 
@@ -1635,69 +1669,71 @@ async function loadAdminStaff() {
 
 
   box.innerHTML =
-    (data || [])
-      .map(member => `
+    (data || []).map(member => `
 
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
 
-          <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3">
 
-            <img
-              src="${escapeHTML(
-                member.avatar_url ||
-                "https://i.pravatar.cc/150"
-              )}"
-              class="w-12 h-12 rounded-xl object-cover"
-              alt="Avatar"
-            >
+          <img
+            src="${escapeHTML(
+              member.avatar_url ||
+              "https://i.pravatar.cc/150"
+            )}"
+            class="w-12 h-12 rounded-xl object-cover"
+          >
 
-            <div class="flex-1">
+          <div class="flex-1">
 
-              <p class="font-bold">
-                ${escapeHTML(member.name)}
-              </p>
+            <p class="font-bold">
 
-              <p class="text-red-400 text-xs">
-                ${escapeHTML(member.role)}
-              </p>
+              ${escapeHTML(member.name)}
 
-            </div>
+            </p>
 
-            <button
-              onclick="editStaff('${member.id}')"
-              class="bg-zinc-800 w-10 h-10 rounded-xl">
+            <p class="text-red-400 text-xs">
 
-              <i class="fa-solid fa-pen"></i>
+              ${escapeHTML(member.role)}
 
-            </button>
-
-            <button
-              onclick="deleteStaff('${member.id}')"
-              class="bg-red-500/10 text-red-400 w-10 h-10 rounded-xl">
-
-              <i class="fa-solid fa-trash"></i>
-
-            </button>
+            </p>
 
           </div>
 
+          <button
+            onclick="editStaff('${member.id}')"
+            class="bg-zinc-800 w-10 h-10 rounded-xl">
+
+            <i class="fa-solid fa-pen"></i>
+
+          </button>
+
+          <button
+            onclick="deleteStaff('${member.id}')"
+            class="bg-red-500/10 text-red-400 w-10 h-10 rounded-xl">
+
+            <i class="fa-solid fa-trash"></i>
+
+          </button>
+
         </div>
 
-      `)
-      .join("");
+      </div>
+
+    `).join("");
 
 }
 
 
-/* =====================================================
+/* =========================================================
    AGREGAR STAFF
-===================================================== */
+========================================================= */
 
 async function addStaff() {
 
   if (!hasPermission("manage_staff")) {
 
     alert("No tienes permiso.");
+
     return;
 
   }
@@ -1717,7 +1753,7 @@ async function addStaff() {
       .trim();
 
 
-  const discordName =
+  const discord =
     document
       .getElementById("staffDiscord")
       .value
@@ -1733,6 +1769,7 @@ async function addStaff() {
   if (!name) {
 
     alert("Escribe el nombre.");
+
     return;
 
   }
@@ -1743,17 +1780,13 @@ async function addStaff() {
       .from("staff")
       .insert({
 
-        name:
-          name,
+        name: name,
 
-        avatar_url:
-          avatar,
+        avatar_url: avatar,
 
-        discord:
-          discordName,
+        discord: discord,
 
-        role:
-          role
+        role: role
 
       });
 
@@ -1776,9 +1809,7 @@ async function addStaff() {
     "staffDiscord"
   ].forEach(id => {
 
-    document
-      .getElementById(id)
-      .value = "";
+    document.getElementById(id).value = "";
 
   });
 
@@ -1786,25 +1817,17 @@ async function addStaff() {
   await loadStaff();
   await loadAdminStaff();
 
-  alert(
-    "Miembro agregado correctamente."
-  );
-
 }
 
 
-/* =====================================================
+/* =========================================================
    EDITAR STAFF
-===================================================== */
+========================================================= */
 
 async function editStaff(id) {
 
-  if (!hasPermission("manage_staff")) {
-
-    alert("No tienes permiso.");
+  if (!hasPermission("manage_staff"))
     return;
-
-  }
 
 
   const { data, error } =
@@ -1817,41 +1840,38 @@ async function editStaff(id) {
 
   if (error) {
 
-    alert(
-      "No se pudo cargar."
-    );
+    alert("No se pudo cargar.");
 
     return;
 
   }
 
 
-  editingStaffId =
-    id;
+  editingStaffId = id;
 
 
-  document
-    .getElementById("editName")
-    .value =
-      data.name || "";
+  document.getElementById(
+    "editName"
+  ).value =
+    data.name || "";
 
 
-  document
-    .getElementById("editAvatar")
-    .value =
-      data.avatar_url || "";
+  document.getElementById(
+    "editAvatar"
+  ).value =
+    data.avatar_url || "";
 
 
-  document
-    .getElementById("editDiscord")
-    .value =
-      data.discord || "";
+  document.getElementById(
+    "editDiscord"
+  ).value =
+    data.discord || "";
 
 
-  document
-    .getElementById("editRole")
-    .value =
-      data.role || "Soporte";
+  document.getElementById(
+    "editRole"
+  ).value =
+    data.role || "Soporte";
 
 
   document
@@ -1864,8 +1884,7 @@ async function editStaff(id) {
 
 function closeEdit() {
 
-  editingStaffId =
-    null;
+  editingStaffId = null;
 
   document
     .getElementById("editModal")
@@ -1875,20 +1894,17 @@ function closeEdit() {
 }
 
 
-/* =====================================================
+/* =========================================================
    GUARDAR STAFF
-===================================================== */
+========================================================= */
 
 async function saveEdit() {
 
   if (
     !editingStaffId ||
     !hasPermission("manage_staff")
-  ) {
-
+  )
     return;
-
-  }
 
 
   const payload = {
@@ -1949,29 +1965,22 @@ async function saveEdit() {
 }
 
 
-/* =====================================================
+/* =========================================================
    ELIMINAR STAFF
-===================================================== */
+========================================================= */
 
 async function deleteStaff(id) {
 
-  if (!hasPermission("manage_staff")) {
-
-    alert("No tienes permiso.");
+  if (!hasPermission("manage_staff"))
     return;
-
-  }
 
 
   if (
     !confirm(
       "¿Seguro que quieres eliminar este miembro?"
     )
-  ) {
-
+  )
     return;
-
-  }
 
 
   const { error } =
@@ -1999,49 +2008,66 @@ async function deleteStaff(id) {
 }
 
 
-/* =====================================================
-   CERRAR SESIÓN
-===================================================== */
+/* =========================================================
+   PANEL
+========================================================= */
+
+function openAdmin() {
+
+  if (
+    currentUser &&
+    currentProfile &&
+    staffRoles.includes(
+      currentProfile.role
+    )
+  ) {
+
+    showPage("admin");
+
+  } else {
+
+    alert(
+      "Debes iniciar sesión con Discord y tener un rol de Staff."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 async function logout() {
 
-  await supabaseClient
-    .auth
-    .signOut();
-
+  await supabaseClient.auth.signOut();
 
   currentUser = null;
   currentProfile = null;
-
-
-  document
-    .getElementById("userBox")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("discordLoginBox")
-    .classList
-    .remove("hidden");
-
 
   document
     .getElementById("adminButton")
     .classList
     .add("hidden");
 
+  updateUserInterface();
 
   showPage("inicio");
 
 }
 
 
-/* =====================================================
-   INICIALIZAR
-===================================================== */
+/* =========================================================
+   INICIALIZACIÓN
+========================================================= */
 
 async function initialize() {
+
+  console.log(
+    "PILINGO RP iniciando..."
+  );
+
 
   const {
     data: {
@@ -2063,8 +2089,16 @@ async function initialize() {
   }
 
 
+  updateUserInterface();
+
   await loadStaff();
 
+
+  /*
+    Detecta automáticamente
+    cuando Discord devuelve
+    al usuario a la página.
+  */
 
   supabaseClient
     .auth
@@ -2072,7 +2106,7 @@ async function initialize() {
       async (event, session) => {
 
         console.log(
-          "Supabase Auth:",
+          "Auth:",
           event
         );
 
@@ -2084,10 +2118,17 @@ async function initialize() {
 
           await loadProfile();
 
+          updateUserInterface();
+
+          await loadStaff();
+
         } else {
 
           currentUser = null;
+
           currentProfile = null;
+
+          updateUserInterface();
 
         }
 
